@@ -45,6 +45,7 @@ public class UpdateManager : MonoBehaviour
     {
         foreach (var obj in updatables)
         {
+            Debug.Log("Updating: " + obj.GetType().Name);
             obj.Update();
         }
     }
