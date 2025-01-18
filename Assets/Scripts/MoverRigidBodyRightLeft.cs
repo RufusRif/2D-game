@@ -12,7 +12,7 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
     {
         // Регистрируем этот объект в UpdateManager
         UpdateManager.Instance.Register(this);
-        Debug.Log("MoverRigidBodyRightLeft registered in UpdateManager");
+       
     }
 
     private void OnDisable()
