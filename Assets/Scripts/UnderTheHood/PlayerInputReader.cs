@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class PlayerInputReader : MonoBehaviour
 {
         private InputSystem_Actions inputActions;
+
     // События для действий
     public UnityEvent<float> OnMove;
     public UnityEvent OnJump;

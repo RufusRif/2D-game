@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 189492267}
   - component: {fileID: 189492269}
   - component: {fileID: 189492268}
+  - component: {fileID: 189492270}
   m_Layer: 9
   m_Name: Panel_2
   m_TagString: Panel
@@ -340,6 +341,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &189492270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189492266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae31ae9e4e1badf469288c02c5eec06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTouchedFromBelow:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1141697131}
+        m_TargetAssemblyTypeName: PositionStopper, Assembly-CSharp
+        m_MethodName: StopMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  currentCollider: {fileID: 189492268}
 --- !u!1 &230940866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,7 +2593,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 692836633}
-  - component: {fileID: 692836632}
   m_Layer: 0
   m_Name: DebugChecker
   m_TagString: Untagged
@@ -2572,18 +2600,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &692836632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692836631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec3467a53caf5fd449394a369af8bc66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &692836633
 Transform:
   m_ObjectHideFlags: 0
@@ -2734,9 +2750,12 @@ GameObject:
   - component: {fileID: 1141697124}
   - component: {fileID: 1141697129}
   - component: {fileID: 1141697128}
-  - component: {fileID: 1141697130}
-  - component: {fileID: 1141697131}
   - component: {fileID: 1141697132}
+  - component: {fileID: 1141697131}
+  - component: {fileID: 1141697134}
+  - component: {fileID: 1141697135}
+  - component: {fileID: 1141697137}
+  - component: {fileID: 1141697138}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2932,9 +2951,21 @@ MonoBehaviour:
   OnJump:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1141697130}
+      - m_Target: {fileID: 1141697135}
         m_TargetAssemblyTypeName: PushRigidBody, Assembly-CSharp
         m_MethodName: Push
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1141697137}
+        m_TargetAssemblyTypeName: JumpOntoPanel, Assembly-CSharp
+        m_MethodName: JumpUpToPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2950,8 +2981,20 @@ MonoBehaviour:
   OnJumpDown:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1141697138}
+        m_TargetAssemblyTypeName: GetOfPanelFromStandingPosition, Assembly-CSharp
+        m_MethodName: JumpDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1141697132}
-        m_TargetAssemblyTypeName: GetOffPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: GetOfPanelFromHanging, Assembly-CSharp
         m_MethodName: JumpDownFromPanel
         m_Mode: 1
         m_Arguments:
@@ -2962,21 +3005,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1141697130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141697123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2454c30d89e26334eaa9d666b6d71d94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1141697124}
-  sideToBePushed: {x: 0, y: 1}
-  pushForce: 6
 --- !u!114 &1141697131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3001,6 +3029,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bbda0e983f2f94bb7d7c482a2abb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1141697134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141697123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae31ae9e4e1badf469288c02c5eec06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTouchedFromBelow:
+    m_PersistentCalls:
+      m_Calls: []
+  currentCollider: {fileID: 0}
+--- !u!114 &1141697135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141697123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2454c30d89e26334eaa9d666b6d71d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1141697124}
+  sideToBePushed: {x: 0, y: 1}
+  pushForce: 6
+--- !u!114 &1141697137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141697123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f9c85d44064614a9cead465198d40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1141697124}
+  jumpForce: 5
+  DontInteractWithPanel: NOCollidePanel
+--- !u!114 &1141697138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141697123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6f48cfa810afb44a40d0e64a882eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1141697124}
+  DontInteractWithPanel: NOCollidePanel
 --- !u!1 &1160570130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,9 +3571,10 @@ GameObject:
   - component: {fileID: 1595632267}
   - component: {fileID: 1595632266}
   - component: {fileID: 1595632268}
+  - component: {fileID: 1595632269}
   m_Layer: 0
-  m_Name: Floor
-  m_TagString: Floor
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3845,6 +3934,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 18.092083, y: 0.96860504}
   m_EdgeRadius: 0
+--- !u!114 &1595632269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595632264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1646504270
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,6 +4120,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1234784322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1893659077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893659079}
+  - component: {fileID: 1893659078}
+  m_Layer: 0
+  m_Name: PlyerState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1893659078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893659077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd77e234b381abd4c96cc0d65f88c090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1893659079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893659077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6447091, y: -2.0873182, z: 0.053194337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001511944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4166,8 +4311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae31ae9e4e1badf469288c02c5eec06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightThreshold: 0.1
-  OnPlayerBelowPlank:
+  OnTouchedFromBelow:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1141697131}
@@ -4182,6 +4326,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  currentCollider: {fileID: 2001511946}
 --- !u!1 &2049580374
 GameObject:
   m_ObjectHideFlags: 0
@@ -4465,3 +4610,4 @@ SceneRoots:
   - {fileID: 296787532}
   - {fileID: 1330133439}
   - {fileID: 1318192160}
+  - {fileID: 1893659079}
