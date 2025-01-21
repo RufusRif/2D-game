@@ -11,18 +11,8 @@ public class PlayerState : MonoBehaviour
 
     private void Awake()
     {
-        // Проверяем, чтобы в сцене был только один экземпляр PlayerState
-        if (Instance != null && Instance != this)
-        {
-            Debug.LogWarning("Попытка создания второго экземпляра PlayerState: " + gameObject.name);
-
-            Destroy(gameObject); // Уничтожаем лишние экземпляры
-            return;
-        }
-        Debug.Log("Экземпляр синглтона создан: " + gameObject.name);
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        
     }
 
     // Установка состояния: висит/не висит
@@ -42,3 +32,7 @@ public class PlayerState : MonoBehaviour
     }
 
 }
+
+
+
+
