@@ -9,6 +9,8 @@ public class PlayerState : MonoBehaviour
 
     public bool IsOnGround {  get; private set; }
 
+    public bool IsNearTheTree {  get; private set; }
+
     private void Awake()
     {
         Instance = this;
@@ -29,6 +31,11 @@ public class PlayerState : MonoBehaviour
     public void SetOnGround(bool isOnGround)
     {
         IsOnGround = isOnGround;
+    }
+
+    public void SetIsNearTheTree(bool isNearTheTree)
+    {
+       IsNearTheTree = isNearTheTree;
     }
 
 }

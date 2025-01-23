@@ -8,14 +8,11 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
 
     private void OnEnable()
     {
-        
         UpdateManager.Instance.Register(this);
     }
     private void OnDisable()
     {
-
         UpdateManager.Instance.Unregister(this);
-
     }
     public void MoveHorizontal(float direction)
     {
@@ -23,9 +20,6 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
     }
     public void Update()
     {
-
         rb.linearVelocityX = moveInput * speed;
-
     }
-
 }

@@ -11,6 +11,7 @@ public class UpdateManager : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject); // Этот объект не будет уничтожаться при смене сцены
+        
     }
 
     public void Register(IUpdatable obj)
