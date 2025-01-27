@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Panel
   - Ground
+  - Fruit
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Enemy
   - Panel
   - Floor
-  - 
+  - Fruit
   - 
   - 
   - 

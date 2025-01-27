@@ -6,6 +6,8 @@ public class ActionDispatcher : MonoBehaviour
     [SerializeField] ChangerLayer changerLayer;
     [SerializeField] PositionUnstopper positionUnstopper;
     [SerializeField] MoverRigidBodyRightLeft moverRigidBody;
+    [SerializeField] ObjectInstantiater objectInstantiater;
+    [SerializeField] FruitState fruitState;
 
     public void UpButtonPressed()
     {
@@ -27,7 +29,6 @@ public class ActionDispatcher : MonoBehaviour
         {
             changerLayer?.ChangeTheLayer();
         }
-
         else if (PlayerState.Instance.IsHanging)
         {
             positionUnstopper?.UnStopPossition();
@@ -37,6 +38,15 @@ public class ActionDispatcher : MonoBehaviour
     {
         moverRigidBody?.MoveHorizontal(direction); 
         Debug.Log("Персонаж двигается с направлением: " + direction);
+    }
+
+    public void ActionPressed()
+    {
+        if (PlayerState.Instance.IsStandingOnSecondPlatform && fruitState.IsTaiking)
+        {
+            objectInstantiater?.InstantiateObject();
+            fruitState.SetIsTaking(false);
+        }
     }
 }
 

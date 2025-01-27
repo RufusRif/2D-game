@@ -6,10 +6,9 @@ public class PlayerState : MonoBehaviour
 
     public bool IsHanging { get; private set; }
     public bool IsStandingOnPlatform {  get; private set; }
-
     public bool IsOnGround {  get; private set; }
-
     public bool IsNearTheTree {  get; private set; }
+    public bool IsStandingOnSecondPlatform { get; private set; }
 
     private void Awake()
     {
@@ -38,6 +37,10 @@ public class PlayerState : MonoBehaviour
        IsNearTheTree = isNearTheTree;
     }
 
+    public void SetStandingOnSecondPlatform(bool isStandingOnSecondPlatform)
+    {
+       IsStandingOnSecondPlatform = isStandingOnSecondPlatform;
+    }
 }
 
 
