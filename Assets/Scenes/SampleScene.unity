@@ -4532,9 +4532,9 @@ GameObject:
   - component: {fileID: 2049580375}
   - component: {fileID: 2049580377}
   - component: {fileID: 2049580376}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Panel_3
-  m_TagString: Untagged
+  m_TagString: ThirdPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3171498576155415213}
   - component: {fileID: 4645762414459715396}
   - component: {fileID: 7365633470105947274}
+  - component: {fileID: -8611005325388536665}
+  - component: {fileID: 6174223712827594387}
   m_Layer: 11
   m_Name: Apple_0
   m_TagString: Fruit
@@ -162,3 +164,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.37032658, y: 0.30702627}
   m_EdgeRadius: 0
+--- !u!114 &-8611005325388536665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422720143819218685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2454c30d89e26334eaa9d666b6d71d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4645762414459715396}
+  sideToBePushed: {x: 0, y: 1}
+  pushForce: 8
+  objectInstantiater: {fileID: 0}
+--- !u!114 &6174223712827594387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422720143819218685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef90623080fd65048a7c89cb9c6f7522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4645762414459715396}
+  DontInteractWithPanel: NOCollidePanel
