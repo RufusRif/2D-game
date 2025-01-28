@@ -6,8 +6,7 @@ public class ObjectInstantiater : MonoBehaviour
 {
     [SerializeField] private GameObject objectToSpawn; 
     [SerializeField] private Transform thrownPoint;
-    //public event Action OnFruitInstantiated;
-
+    
 
     public void InstantiateObject()
     {

@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class CheckerGroung : MonoBehaviour
 {
-    private PlayerState playerState;
-    private void Start()
-    {
-        playerState = FindFirstObjectByType<PlayerState>();
-    }
+    [SerializeField] private PlayerState playerState;
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))

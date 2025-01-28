@@ -3,18 +3,13 @@ using UnityEngine;
 
 public class ChangerLayer : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
+    
     [SerializeField] private string DontInteractWithPanel = "NOCollidePanel";
     private int originalLayer;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
     public void ChangeTheLayer()
     {
-        originalLayer = gameObject.layer; // Сохранить текущий слой
-        gameObject.layer = LayerMask.NameToLayer(DontInteractWithPanel);// Переключить слой
+        originalLayer = gameObject.layer; 
+        gameObject.layer = LayerMask.NameToLayer(DontInteractWithPanel);
         StartCoroutine(RestoreLayerAfterDelay(0.5f));
     }
     private IEnumerator RestoreLayerAfterDelay(float delay)

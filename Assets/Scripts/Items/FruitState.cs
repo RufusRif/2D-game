@@ -4,8 +4,8 @@ using UnityEngine.Events;
 public class FruitState : MonoBehaviour
 {
     public static FruitState Instance { get; private set; }
-    public bool IsTaiking { get; private set; }
-
+    [field: SerializeField]public bool IsTaiking { get; private set; }
+    
     public UnityEvent OnNutTaken;
     public UnityEvent OnNutDropped;
 
