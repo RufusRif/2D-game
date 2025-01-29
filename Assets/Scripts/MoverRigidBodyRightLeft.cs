@@ -18,7 +18,7 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
     {
         moveInput = direction;
     }
-    public void Update()
+    public void CustomUpdate()
     {
         rb.linearVelocityX = moveInput * speed;
     }

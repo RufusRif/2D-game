@@ -35,7 +35,7 @@ public class UpdateManager : MonoBehaviour
         foreach (var obj in updatables)
         {
 
-            obj.Update();
+            obj.CustomUpdate();
         }
     }
 }

@@ -3,6 +3,6 @@ using UnityEngine;
 
 public interface IUpdatable
 {
-    void Update();
+    void CustomUpdate();
 }
 
