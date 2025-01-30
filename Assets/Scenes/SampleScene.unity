@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 74958122}
   - component: {fileID: 74958126}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: PlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,21 +215,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-  OnNutDropped:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1431644853}
-        m_TargetAssemblyTypeName: FruitDisplay, Assembly-CSharp
-        m_MethodName: SetImageAlphaHalf
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &100144272
 GameObject:
@@ -481,7 +466,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnFruitOnRoof:
+  OnFruitOnFloor:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &230940866
@@ -2751,7 +2736,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnFruitOnRoof:
+  OnFruitOnFloor:
     m_PersistentCalls:
       m_Calls: []
 --- !u!61 &880928995
@@ -4369,9 +4354,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1646504272}
   - component: {fileID: 1646504271}
-  - component: {fileID: 1646504274}
   - component: {fileID: 1646504273}
   - component: {fileID: 1646504275}
+  - component: {fileID: 1646504276}
   m_Layer: 7
   m_Name: Bot
   m_TagString: Bot
@@ -4446,7 +4431,8 @@ Transform:
   m_LocalPosition: {x: 2.06, y: 2.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1921511138}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1646504273
@@ -4476,23 +4462,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1646504274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646504270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc6c3c00ba0bc64c8d64f7946a63909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  minMoveTime: 2
-  maxMoveTime: 5
-  minStopTime: 1
-  maxStopTime: 3
 --- !u!61 &1646504275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4539,6 +4508,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6031537, y: 0.8751457}
   m_EdgeRadius: 0
+--- !u!114 &1646504276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646504270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc6c3c00ba0bc64c8d64f7946a63909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  minMoveTime: 2
+  maxMoveTime: 5
+  minStopTime: 1
+  maxStopTime: 3
+  stonePrefab: {fileID: 200054546042777327, guid: b9a537425ffc8a049b111df148ef3535, type: 3}
+  spawnPoint: {fileID: 1921511138}
 --- !u!1 &1852102951
 GameObject:
   m_ObjectHideFlags: 0
@@ -4625,6 +4613,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1234784322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1921511137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1921511138}
+  m_Layer: 7
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1921511138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921511137}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.312, y: -0.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1646504272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2049580374
 GameObject:
@@ -4777,9 +4796,21 @@ MonoBehaviour:
   OnTouchedFromBelow:
     m_PersistentCalls:
       m_Calls: []
-  OnFruitOnRoof:
+  OnFruitOnFloor:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1646504276}
+        m_TargetAssemblyTypeName: BotMovement, Assembly-CSharp
+        m_MethodName: MoveToPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2101907617
 GameObject:
   m_ObjectHideFlags: 0

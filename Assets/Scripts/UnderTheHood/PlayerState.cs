@@ -24,7 +24,6 @@ public class PlayerState : MonoBehaviour
     {
         IsStandingOnPlatform = isStandingOnPlatform;
     }
-
     public void SetOnGround(bool isOnGround)
     {
         IsOnGround = isOnGround;

@@ -16,7 +16,7 @@ public class ActionDispatcher : MonoBehaviour
             pushRigidBody?.Push();
         }
 
-        if (PlayerState.Instance.IsHanging)
+        else if (PlayerState.Instance.IsHanging)
         {
             changerLayer?.ChangeTheLayer();
             pushRigidBody?.Push();
@@ -39,7 +39,6 @@ public class ActionDispatcher : MonoBehaviour
         moverRigidBody?.MoveHorizontal(direction); 
         Debug.Log("Персонаж двигается с направлением: " + direction);
     }
-
     public void ActionPressed()
     {
         if (PlayerState.Instance.IsStandingOnSecondPlatform && fruitState.IsTaiking)
