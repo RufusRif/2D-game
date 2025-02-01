@@ -8,6 +8,8 @@ public class FruitState : MonoBehaviour
 
     public UnityEvent OnNutTaken;
 
+    public UnityEvent OnWasThrown;
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,6 +30,10 @@ public class FruitState : MonoBehaviour
         if (isTaking)
         {
             OnNutTaken?.Invoke();
+        }
+        else
+        {
+            OnWasThrown?.Invoke();
         }
         
     }

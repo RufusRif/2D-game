@@ -13,6 +13,7 @@ public class FruitDisplay : MonoBehaviour
             Color color = image.color; // Получаем текущий цвет
             color.a = 1f; // Изменяем альфа-канал
             image.color = color; // Присваиваем обратно
+            Debug.Log("Метод установки ЯРКОСТИ сработал");
         }
     }
 
@@ -24,6 +25,7 @@ public class FruitDisplay : MonoBehaviour
             Color color = image.color; // Получаем текущий цвет
             color.a = 0.3f; // Изменяем альфа-канал
             image.color = color; // Присваиваем обратно
+            Debug.Log("Метод установки бледности сработал");
         }
     }
 }
