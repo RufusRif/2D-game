@@ -36,7 +36,7 @@ public class CollisionCheckerPlatform : MonoBehaviour
         {
             Vector3 fruitPosition = collision.transform.position;
             OnFruitOnFloor?.Invoke(fruitPosition);
-            Debug.Log($"Фрукт упал в позиции: {fruitPosition}");
+           
         }
     }
     void OnCollisionStay2D(Collision2D collision)

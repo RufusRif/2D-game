@@ -4347,6 +4347,8 @@ GameObject:
   - component: {fileID: 1646504273}
   - component: {fileID: 1646504275}
   - component: {fileID: 1646504276}
+  - component: {fileID: 1646504277}
+  - component: {fileID: 1646504278}
   m_Layer: 7
   m_Name: Bot
   m_TagString: Bot
@@ -4441,7 +4443,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5ddc3f7ca5af9794c95cec5ce7f47d2a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4449,8 +4451,8 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &1646504275
 BoxCollider2D:
@@ -4462,7 +4464,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5ddc3f7ca5af9794c95cec5ce7f47d2a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4515,8 +4517,50 @@ MonoBehaviour:
   maxMoveTime: 5
   minStopTime: 1
   maxStopTime: 3
+  isMoving: 1
+  isMovingToTarget: 0
   stonePrefab: {fileID: 200054546042777327, guid: b9a537425ffc8a049b111df148ef3535, type: 3}
   spawnPoint: {fileID: 1921511138}
+--- !u!114 &1646504277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646504270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bee97eff0877945a093a46d8e1b0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FruitWasEaten:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1646504278}
+        m_TargetAssemblyTypeName: BotManager, Assembly-CSharp
+        m_MethodName: DropStones
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1646504278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646504270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3aa4ca77d16421489a4dd9b02f314d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botMovement: {fileID: 1646504276}
 --- !u!1 &1852102951
 GameObject:
   m_ObjectHideFlags: 0
@@ -4789,9 +4833,9 @@ MonoBehaviour:
   OnFruitOnFloor:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1646504276}
-        m_TargetAssemblyTypeName: BotMovement, Assembly-CSharp
-        m_MethodName: MoveToPosition
+      - m_Target: {fileID: 1646504278}
+        m_TargetAssemblyTypeName: BotManager, Assembly-CSharp
+        m_MethodName: NoticeFruit
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

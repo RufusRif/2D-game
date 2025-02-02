@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Fruit
   - ThirdPanel
+  - FallingObject
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Floor
   - Fruit
   - ThirdPanel
-  - 
+  - FallingObject
   - 
   - 
   - 

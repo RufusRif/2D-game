@@ -46,13 +46,13 @@ public class ActionDispatcher : MonoBehaviour
             objectInstantiater?.InstantiateObject();
 
             fruitState.SetIsTaking(false);
-            Debug.Log("Значение false передано в fruitState ");
+            //Debug.Log("Значение false передано в fruitState ");
         }
         else if (PlayerState.Instance.IsNearTheTree && !FruitState.Instance.IsTaiking)
         {
 
             FruitState.Instance.SetIsTaking(true);
-            Debug.Log("Значение true передано в fruitState ");
+            //Debug.Log("Значение true передано в fruitState ");
         }
     }
 }
