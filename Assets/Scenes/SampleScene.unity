@@ -2880,7 +2880,7 @@ Transform:
   m_GameObject: {fileID: 1020708555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.275, y: -0.275, z: 0}
+  m_LocalPosition: {x: 0.324, y: 0.285, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4346,6 +4346,7 @@ GameObject:
   - component: {fileID: 1646504271}
   - component: {fileID: 1646504273}
   - component: {fileID: 1646504275}
+  - component: {fileID: 1646504279}
   - component: {fileID: 1646504276}
   - component: {fileID: 1646504277}
   - component: {fileID: 1646504278}
@@ -4402,7 +4403,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 3450125647347128806, guid: 070a0fea8d7c56647b4a4a1bf7feb63e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.0625, y: 1.375}
@@ -4561,6 +4562,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botMovement: {fileID: 1646504276}
+--- !u!95 &1646504279
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646504270}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eaaa2427b9c45274b9934f0530a772ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1852102951
 GameObject:
   m_ObjectHideFlags: 0
