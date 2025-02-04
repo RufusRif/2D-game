@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class BotMovement : MonoBehaviour, IUpdatable
 {
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 1.5f;
     [SerializeField] private float minMoveTime = 1f;
     [SerializeField] private float maxMoveTime = 3f;
     [SerializeField] private float minStopTime = 2f;
@@ -27,15 +27,15 @@ public class BotMovement : MonoBehaviour, IUpdatable
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-       
+
     }
 
     public IEnumerator RandomMovementRoutine()
     {
-        
+
         while (true)
         {
-            
+
             moveDirection = Random.value > 0.5f ? 1f : -1f;
             float moveTime = Random.Range(minMoveTime, maxMoveTime);
             isMoving = true;
@@ -81,7 +81,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
             if (Vector2.Distance(transform.position, targetPosition) > 0.1f)
             {
                 Vector2 direction = (targetPosition - transform.position).normalized;
-                rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(direction.x * speed * 2f, rb.linearVelocity.y);/////////////////
                 moveDirection = Mathf.Sign(direction.x);
                 animator.SetFloat("xVelocity", Mathf.Abs(direction.x));
             }
