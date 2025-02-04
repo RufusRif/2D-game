@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
 {
@@ -21,5 +22,17 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
     public void CustomUpdate()
     {
         rb.linearVelocityX = moveInput * speed;
+        FlipPlayer();
     }
+    private void FlipPlayer()
+    {
+        Vector3 scale = transform.localScale;
+        if (moveInput != 0)
+        {
+            scale.x = Mathf.Abs(scale.x) * Mathf.Sign(moveInput);
+        }
+        transform.localScale = scale;
+    }
+
+
 }

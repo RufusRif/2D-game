@@ -27,7 +27,6 @@ public class BotMovement : MonoBehaviour, IUpdatable
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
     }
 
     public IEnumerator RandomMovementRoutine()
@@ -35,7 +34,6 @@ public class BotMovement : MonoBehaviour, IUpdatable
 
         while (true)
         {
-
             moveDirection = Random.value > 0.5f ? 1f : -1f;
             float moveTime = Random.Range(minMoveTime, maxMoveTime);
             isMoving = true;
