@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 public class BotMovement : MonoBehaviour, IUpdatable
 {
     [SerializeField] private float speed = 1.5f;
@@ -19,27 +18,32 @@ public class BotMovement : MonoBehaviour, IUpdatable
 
     [SerializeField] private GameObject stonePrefab;
     [SerializeField] private Transform spawnPoint;
-
     private Vector3 targetPosition;
     private Animator animator;
+
+    [SerializeField] private SpriteFlipper spriteFlipper;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
     }
 
     public IEnumerator RandomMovementRoutine()
     {
-
         while (true)
         {
+            
             moveDirection = Random.value > 0.5f ? 1f : -1f;
+            
+            spriteFlipper.SetFlipDirection(moveDirection);
+           
             float moveTime = Random.Range(minMoveTime, maxMoveTime);
             isMoving = true;
-
             yield return new WaitForSeconds(moveTime);
 
+            
             isMoving = false;
             float stopTime = Random.Range(minStopTime, maxStopTime);
             yield return new WaitForSeconds(stopTime);
@@ -48,6 +52,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
 
     private void ChangeMoveDirection()
     {
+       
         if (transform.position.x <= -8.4 && moveDirection < 0)
         {
             moveDirection = 1;
@@ -56,60 +61,56 @@ public class BotMovement : MonoBehaviour, IUpdatable
         {
             moveDirection = -1;
         }
+
+        spriteFlipper.SetFlipDirection(moveDirection);
     }
 
     public void MoveToTarget(Vector3 position)
     {
         targetPosition = position;
         isMovingToTarget = true;
-
-    }
-    private void FlipCharacter()
-    {
-        Vector3 scale = transform.localScale;
-        scale.x = Mathf.Abs(scale.x) * moveDirection;
-        transform.localScale = scale;
     }
 
     public void CustomUpdate()
     {
         if (isMovingToTarget)
         {
-            // Двигаемся к цели
+           
             if (Vector2.Distance(transform.position, targetPosition) > 0.1f)
             {
                 Vector2 direction = (targetPosition - transform.position).normalized;
-                rb.linearVelocity = new Vector2(direction.x * speed * 2f, rb.linearVelocity.y);/////////////////
+                rb.linearVelocityX =direction.x * speed * 2f; 
                 moveDirection = Mathf.Sign(direction.x);
+                spriteFlipper.SetFlipDirection(moveDirection);
                 animator.SetFloat("xVelocity", Mathf.Abs(direction.x));
             }
             else
             {
-                // Останавливаемся, когда достигли цели
-                rb.linearVelocity = Vector2.zero;
-                isMovingToTarget = false; // Сбрасываем флаг
+                
+                rb.linearVelocityX = 0;
+                isMovingToTarget = false;
                 animator.SetFloat("xVelocity", 0);
             }
         }
         else if (isMoving)
         {
-            // Обычное случайное движение
+            
             rb.linearVelocityX = moveDirection * speed;
             animator.SetFloat("xVelocity", Mathf.Abs(moveDirection));
         }
         else
         {
-            // Останавливаем движение
-            rb.linearVelocity = Vector2.zero;
+            
+            rb.linearVelocityX = 0;
             animator.SetFloat("xVelocity", 0);
         }
-        ChangeMoveDirection();
-        FlipCharacter();
+
+        spriteFlipper.SetFlipDirection(moveDirection);
     }
+
     public IEnumerator DropStonesRoutine()
     {
         yield return new WaitForSeconds(2f);
-
         for (int i = 0; i < 3; i++)
         {
             Instantiate(stonePrefab, spawnPoint.position, Quaternion.identity);
@@ -119,11 +120,13 @@ public class BotMovement : MonoBehaviour, IUpdatable
 
     private void OnEnable()
     {
-        UpdateManager.Instance.Register(this); // Регистрируем объект для обновления
+        UpdateManager.Instance.Register(this);
     }
 
     private void OnDisable()
     {
-        UpdateManager.Instance.Unregister(this); // Отменяем регистрацию при отключении
+        UpdateManager.Instance.Unregister(this);
     }
+
+   
 }
