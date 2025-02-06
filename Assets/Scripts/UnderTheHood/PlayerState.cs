@@ -9,6 +9,7 @@ public class PlayerState : MonoBehaviour
     [field: SerializeField] public bool IsOnGround {  get; private set; }
     [field: SerializeField] public bool IsNearTheTree {  get; private set; }
     [field: SerializeField] public bool IsStandingOnSecondPlatform { get; private set; }
+    //[SerializeField] private Animator animator;
 
     private void Awake()
     {
@@ -19,6 +20,13 @@ public class PlayerState : MonoBehaviour
     public void SetHangingState(bool isHanging)
     {
         IsHanging = isHanging;
+        //if(IsHanging)
+        //{
+        //    animator.SetBool("isHanging", true);
+        //}
+        //else { animator.SetBool("isHanging", false); }
+
+
     }
     public void SetStandingOnPlatform(bool isStandingOnPlatform)
     {
