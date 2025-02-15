@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour,IUpdatable
+public class AnimationController : MonoBehaviour, IUpdatable
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
-    [SerializeField] private PlayerState playerState;
 
     private void OnEnable()
     {
@@ -19,20 +18,12 @@ public class AnimationController : MonoBehaviour,IUpdatable
     public void CustomUpdate()
     {
         
-        float xVelocity = Mathf.Abs(rb.linearVelocityX);
-        animator.SetFloat("xVelocity", xVelocity);
+        animator.SetFloat("yVelocity", rb.linearVelocityY);
 
-
-        float yVelocity = rb.linearVelocityY;
-        animator.SetFloat("yVelocity", yVelocity);
-
-        // Обновляем параметр isHanging
-        animator.SetBool("isHanging", playerState.IsHanging);
-
-        // Если персонаж находится на земле и вертикальная скорость равна 0
-        if (playerState.IsOnGround && Mathf.Approximately(yVelocity, 0))
+        
+        if (Mathf.Approximately(rb.linearVelocityY, 0))
         {
-            animator.SetBool("isJumping", false); // Деактивируем isJumping
+            animator.SetBool("isJumping", false); // Деактивируем прыжок
         }
     }
 }

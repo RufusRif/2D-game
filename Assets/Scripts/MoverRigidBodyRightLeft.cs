@@ -29,30 +29,26 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
 
     public void CustomUpdate()
     {
-        
-        UpdateAnimatorParameters();
 
-       
         if (!playerState.IsHanging)
         {
             rb.linearVelocityX = moveInput * speed;
         }
         else
         {
-           
+
             rb.linearVelocityX = 0;
         }
+        UpdateAnimatorParameters();
     }
 
     private void UpdateAnimatorParameters()
     {
-        
         animator.SetBool("isHanging", playerState.IsHanging);
 
-        
         if (!playerState.IsHanging)
         {
-            if (moveInput != 0)
+            if (moveInput != 0 || Mathf.Abs(rb.linearVelocityX) > 0.1f) 
             {
                 animator.SetBool("isRunning", true);
             }
@@ -63,8 +59,11 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
         }
         else
         {
-            
             animator.SetBool("isRunning", false);
         }
+        animator.SetFloat("yVelocity", rb.linearVelocityY);
+
+        
+        animator.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocityX));
     }
 }
