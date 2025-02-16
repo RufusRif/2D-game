@@ -3,13 +3,13 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public static PlayerState Instance { get; private set; }
-
-    [field: SerializeField] public bool IsHanging { get; private set; }
-    [field: SerializeField] public bool IsStandingOnPlatform {  get; private set; }
-    [field: SerializeField] public bool IsOnGround {  get; private set; }
-    [field: SerializeField] public bool IsNearTheTree {  get; private set; }
     [field: SerializeField] public bool IsStandingOnSecondPlatform { get; private set; }
-    //[SerializeField] private Animator animator;
+    [field: SerializeField] public bool IsStandingOnPlatform { get; private set; }
+    [field: SerializeField] public bool IsHanging { get; private set; }
+    [field: SerializeField] public bool IsNearTheTree { get; private set; }
+    [field: SerializeField] public bool IsOnGround { get; private set; }
+    
+
 
     private void Awake()
     {

@@ -28,7 +28,6 @@ public class CollisionCheckerPlatform : MonoBehaviour
 
             if (playerPosition.y < panelTopY)
             {
-
                 OnTouchedFromBelow?.Invoke();
             }
         }
@@ -36,7 +35,6 @@ public class CollisionCheckerPlatform : MonoBehaviour
         {
             Vector3 fruitPosition = collision.transform.position;
             OnFruitOnFloor?.Invoke(fruitPosition);
-           
         }
     }
     void OnCollisionStay2D(Collision2D collision)
@@ -61,7 +59,6 @@ public class CollisionCheckerPlatform : MonoBehaviour
             bool isOnSecondPlatform = characterY > heightOfSecondPlatform;
 
             PlayerState.Instance.SetStandingOnSecondPlatform(isOnSecondPlatform);
-
         }
     }
     void OnCollisionExit2D(Collision2D collision)
