@@ -57,7 +57,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
         {
             moveDirection = 1;
         }
-        else if (transform.position.x >= 8.2 && moveDirection > 0)
+        else if (transform.position.x >= 8.4 && moveDirection > 0)
         {
             moveDirection = -1;
         }
@@ -73,6 +73,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
 
     public void CustomUpdate()
     {
+        ChangeMoveDirection();
         if (isMovingToTarget)
         {
            
@@ -81,7 +82,9 @@ public class BotMovement : MonoBehaviour, IUpdatable
                 Vector2 direction = (targetPosition - transform.position).normalized;
                 rb.linearVelocityX =direction.x * speed * 2f; 
                 moveDirection = Mathf.Sign(direction.x);
+
                 spriteFlipper.SetFlipDirection(moveDirection);
+
                 animator.SetFloat("xVelocity", Mathf.Abs(direction.x));
             }
             else
@@ -96,12 +99,13 @@ public class BotMovement : MonoBehaviour, IUpdatable
         {
             
             rb.linearVelocityX = moveDirection * speed;
+
             animator.SetFloat("xVelocity", Mathf.Abs(moveDirection));
         }
         else
         {
-            
             rb.linearVelocityX = 0;
+
             animator.SetFloat("xVelocity", 0);
         }
 
@@ -117,7 +121,6 @@ public class BotMovement : MonoBehaviour, IUpdatable
             yield return new WaitForSeconds(1.5f);
         }
     }
-
     private void OnEnable()
     {
         UpdateManager.Instance.Register(this);
@@ -127,6 +130,4 @@ public class BotMovement : MonoBehaviour, IUpdatable
     {
         UpdateManager.Instance.Unregister(this);
     }
-
-   
 }

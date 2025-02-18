@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd77e234b381abd4c96cc0d65f88c090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <IsHanging>k__BackingField: 0
-  <IsStandingOnPlatform>k__BackingField: 0
-  <IsOnGround>k__BackingField: 0
-  <IsNearTheTree>k__BackingField: 0
   <IsStandingOnSecondPlatform>k__BackingField: 0
+  <IsStandingOnPlatform>k__BackingField: 0
+  <IsHanging>k__BackingField: 0
+  <IsNearTheTree>k__BackingField: 0
+  <IsOnGround>k__BackingField: 0
 --- !u!114 &74958124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 296787532}
   - component: {fileID: 296787531}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: GroundGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3559,11 +3559,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1197696846}
+  - {fileID: 1112125379}
   - {fileID: 1852102953}
   - {fileID: 100144274}
-  - {fileID: 1112125379}
-  - {fileID: 1242856914}
   - {fileID: 1160570131}
+  - {fileID: 1242856914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1234784323
@@ -3755,7 +3755,7 @@ GameObject:
   - component: {fileID: 1330133439}
   - component: {fileID: 1330133438}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: BackGroundGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4014,7 +4014,8 @@ GameObject:
   - component: {fileID: 1595632266}
   - component: {fileID: 1595632268}
   - component: {fileID: 1595632269}
-  m_Layer: 0
+  - component: {fileID: 1595632270}
+  m_Layer: 14
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4389,6 +4390,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerState: {fileID: 74958122}
+--- !u!114 &1595632270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595632264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a379d2e1bf1f714faa59912351511fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagOfTochedObject: FallingObject
 --- !u!1 &1646504270
 GameObject:
   m_ObjectHideFlags: 0
@@ -4477,7 +4491,7 @@ Transform:
   m_GameObject: {fileID: 1646504270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.06, y: 2.79, z: 0}
+  m_LocalPosition: {x: 8.39, y: 2.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

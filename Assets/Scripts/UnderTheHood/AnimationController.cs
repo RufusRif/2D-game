@@ -23,7 +23,7 @@ public class AnimationController : MonoBehaviour, IUpdatable
         
         if (Mathf.Approximately(rb.linearVelocityY, 0))
         {
-            animator.SetBool("isJumping", false); // Деактивируем прыжок
+            animator.SetBool("isJumping", false); 
         }
     }
 }
