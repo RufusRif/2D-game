@@ -3,17 +3,17 @@ using UnityEngine.UIElements;
 
 public class ParticleManager : MonoBehaviour
 {
-    
+
     public static ParticleManager Instance { get; private set; }
 
-    
+
     public ParticleSystem explosionEffect;
-    public ParticleSystem footstepParticles;
+    public ParticleSystem dust;
     public ParticleSystem objectLiftParticles;
 
     private void Awake()
     {
-       
+
         if (Instance == null)
         {
             Instance = this; // Устанавливаем текущий объект как синглтон
@@ -26,30 +26,16 @@ public class ParticleManager : MonoBehaviour
     }
     public void PlayExplosion(Vector3 position)
     {
-        if (explosionEffect != null)
-        {
-            ParticleSystem explosionInstance = Instantiate(explosionEffect, position, Quaternion.identity);
-            explosionInstance.Play();
+        ParticleSystem explosionInstance = Instantiate(explosionEffect, position, Quaternion.identity);
+        explosionInstance.Play();
 
-            Debug.Log("Взрыв произошел.");
-            Destroy(explosionInstance.gameObject, explosionInstance.main.duration);
-        }
-        else
-        {
-            Debug.LogError("Explosion effect is not assigned!");
-        }
+        Destroy(explosionInstance.gameObject, explosionInstance.main.duration);
     }
-    public void PlayFootstepParticles(Vector3 position)
+    public void CreateDust()
     {
-        if (footstepParticles != null)
-        {
-            Instantiate(footstepParticles, position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogError("Footstep particles are not assigned!");
-        }
-    } 
+        //Instantiate(footstepParticles, position, Quaternion.identity);
+        dust.Play();
+    }
     public void PlayObjectLiftParticles(Vector3 position)
     {
         if (objectLiftParticles != null)

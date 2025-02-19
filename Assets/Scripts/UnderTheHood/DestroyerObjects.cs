@@ -11,6 +11,7 @@ public class DestroyerObjects : MonoBehaviour
             Destroy(collision.gameObject);
 
             Vector3 explosionPosition = collision.transform.position;
+
             ParticleManager.Instance.PlayExplosion(explosionPosition);
 
         }
