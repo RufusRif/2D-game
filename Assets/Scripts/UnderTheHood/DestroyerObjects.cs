@@ -8,8 +8,11 @@ public class DestroyerObjects : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(TagOfTochedObject))
         {
-
             Destroy(collision.gameObject);
+
+            Vector3 explosionPosition = collision.transform.position;
+            ParticleManager.Instance.PlayExplosion(explosionPosition);
+
         }
     }
 }
