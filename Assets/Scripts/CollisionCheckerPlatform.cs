@@ -6,12 +6,10 @@ public class CollisionCheckerPlatform : MonoBehaviour
     [SerializeField] private Collider2D currentCollider; // Коллайдер этой панели
 
     public UnityEvent OnTouchedFromBelow;
-    public UnityEvent <Vector3> OnFruitOnFloor;
+    public UnityEvent<Vector3> OnFruitOnFloor;
 
     private float heightOfSecondPlatform = 0f;
-
-
-    void Start()
+    private void Start()
     {
         if (PlayerState.Instance == null)
         {

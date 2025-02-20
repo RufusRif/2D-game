@@ -663,6 +663,51 @@ Transform:
   - {fileID: 1595632265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &316117339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316117340}
+  - component: {fileID: 316117341}
+  m_Layer: 0
+  m_Name: InventoryPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &316117340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316117339}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5503519, y: 0.4693615, z: -0.07993317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &316117341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316117339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92e9cefe4617d449a4d3423c3fb1c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDynamites: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,6 +2860,7 @@ GameObject:
   - component: {fileID: 1141697136}
   - component: {fileID: 1141697137}
   - component: {fileID: 1141697139}
+  - component: {fileID: 1141697140}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3198,6 +3244,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1141697124}
   animator: {fileID: 1141697138}
+--- !u!114 &1141697140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141697123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ba99a08353a9a4a8683c6dbc960b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfTag: FallingObject
+  CaughtTheBomb:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 316117341}
+        m_TargetAssemblyTypeName: InventoryPlayer, Assembly-CSharp
+        m_MethodName: PlusOneBomb
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1160570130
 GameObject:
   m_ObjectHideFlags: 0
@@ -9930,3 +10004,4 @@ SceneRoots:
   - {fileID: 1589087801}
   - {fileID: 74958125}
   - {fileID: 1544064108}
+  - {fileID: 316117340}
