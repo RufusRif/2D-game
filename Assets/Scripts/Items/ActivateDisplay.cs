@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FruitDisplay : MonoBehaviour
+public class ActivateDisplay : MonoBehaviour
 {
     [SerializeField] private Image image; // Ссылка на UI-изображение ореха
 
