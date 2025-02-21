@@ -4,7 +4,21 @@ using UnityEngine.UI;
 
 public class InventoryPlayer : MonoBehaviour
 {
-    [SerializeField] int currentDynamites = 0;
+    [SerializeField] private int currentDynamites;
+
+    public int CurrentDynamites
+    {
+        get => currentDynamites;
+
+        //set
+        //{
+        //    if (value >= 0 && value <= 3)
+        //    {
+        //        currentDynamites = value;
+        //        UpdateDynamiteCountText();
+        //    }
+        //}
+    }
 
     [SerializeField] private TMP_Text dynamiteCountText;
     public void PlusOneBomb()
@@ -27,10 +41,11 @@ public class InventoryPlayer : MonoBehaviour
     private void UpdateDynamiteCountText()
     {
 
-        dynamiteCountText.text = currentDynamites.ToString(); 
+        dynamiteCountText.text = currentDynamites.ToString();
     }
     private void Start()
     {
-        UpdateDynamiteCountText(); 
+
+        UpdateDynamiteCountText();
     }
 }

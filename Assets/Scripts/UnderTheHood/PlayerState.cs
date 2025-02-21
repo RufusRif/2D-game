@@ -20,13 +20,6 @@ public class PlayerState : MonoBehaviour
     public void SetHangingState(bool isHanging)
     {
         IsHanging = isHanging;
-        //if(IsHanging)
-        //{
-        //    animator.SetBool("isHanging", true);
-        //}
-        //else { animator.SetBool("isHanging", false); }
-
-
     }
     public void SetStandingOnPlatform(bool isStandingOnPlatform)
     {

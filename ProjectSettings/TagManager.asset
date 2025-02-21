@@ -11,6 +11,7 @@ TagManager:
   - Fruit
   - ThirdPanel
   - FallingObject
+  - CatchedBomb
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - ThirdPanel
   - FallingObject
   - Ground
-  - 
+  - CatchedBomb
   - 
   - 
   - 

@@ -3,13 +3,14 @@ using UnityEngine.Events;
 
 public class PlayerInputReader : MonoBehaviour
 {
-        private InputSystem_Actions inputActions;
+    private InputSystem_Actions inputActions;
 
     // События для действий
     public UnityEvent<float> OnMove;
     public UnityEvent OnJump;
     public UnityEvent OnAction;
     public UnityEvent OnJumpDown;
+    public UnityEvent OnShot;
     private void Awake()
     {
 
@@ -29,6 +30,8 @@ public class PlayerInputReader : MonoBehaviour
         inputActions.Player.Action.performed += _ => OnAction?.Invoke();
 
         inputActions.Player.JumpDown.performed += _ => OnJumpDown?.Invoke();
+
+        inputActions.Player.Shot.performed += _ => OnShot?.Invoke();
 
     }
     private void OnEnable()

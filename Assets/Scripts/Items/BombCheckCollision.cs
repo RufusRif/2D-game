@@ -10,9 +10,7 @@ public class BombCheckCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(nameOfTag))
         {
-            Debug.Log("Столкновение с динамитом");
             CaughtTheBomb?.Invoke();
-            Debug.Log(" Событие (Столкновение с динамитом) сработало");
             Destroy(collision.gameObject);
         }
     }
