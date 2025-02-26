@@ -3211,6 +3211,7 @@ GameObject:
   - component: {fileID: 1141697125}
   - component: {fileID: 1141697124}
   - component: {fileID: 1141697138}
+  - component: {fileID: 1141697139}
   - component: {fileID: 1141697129}
   - component: {fileID: 1141697130}
   - component: {fileID: 1141697131}
@@ -3219,9 +3220,7 @@ GameObject:
   - component: {fileID: 1141697134}
   - component: {fileID: 1141697136}
   - component: {fileID: 1141697137}
-  - component: {fileID: 1141697139}
   - component: {fileID: 1141697140}
-  - component: {fileID: 1141697141}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3441,6 +3440,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1141697139}
+        m_TargetAssemblyTypeName: AnimationController, Assembly-CSharp
+        m_MethodName: PlayJumpAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnAction:
     m_PersistentCalls:
       m_Calls:
@@ -3474,9 +3485,9 @@ MonoBehaviour:
   OnShot:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1141697141}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerShot, Assembly-CSharp
-        m_MethodName: Shot
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3501,8 +3512,6 @@ MonoBehaviour:
   rb: {fileID: 1141697124}
   sideToBePushed: {x: 0, y: 1}
   pushForce: 5
-  objectInstantiater: {fileID: 1141697136}
-  animator: {fileID: 1141697138}
 --- !u!114 &1141697131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3571,7 +3580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4406e4c6e4211a743a9cbedd41888768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 3422720143819218685, guid: d61704ee9659c8e468c5a7acca617346, type: 3}
+  objectToSpawn: {fileID: 730949873414033626, guid: 7f9feab42cc118b4388deccc633dda7d, type: 3}
   thrownPoint: {fileID: 1020708556}
 --- !u!114 &1141697137
 MonoBehaviour:
@@ -3661,21 +3670,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1141697141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141697123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e6fa655ddd35b4f8cb4ce708e69ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryPlayer: {fileID: 316117341}
-  spawnPoint: {fileID: 1301416795}
-  catchedObject: {fileID: 200054546042777327, guid: 69f6dd506c6a3ed408a8965ab58ad3c4, type: 3}
 --- !u!1 &1160570130
 GameObject:
   m_ObjectHideFlags: 0

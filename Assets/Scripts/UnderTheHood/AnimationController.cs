@@ -5,6 +5,7 @@ public class AnimationController : MonoBehaviour, IUpdatable
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
 
+
     private void OnEnable()
     {
         UpdateManager.Instance.Register(this);
@@ -25,5 +26,9 @@ public class AnimationController : MonoBehaviour, IUpdatable
         {
             animator.SetBool("isJumping", false); 
         }
+    }
+    public void PlayJumpAnimation()
+    {
+        animator.SetBool("isJumping", true);
     }
 }

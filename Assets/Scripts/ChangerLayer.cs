@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ChangerLayer : MonoBehaviour
 {
-    
     [SerializeField] private string DontInteractWithPanel = "NOCollidePanel";
     private int originalLayer;
     public void ChangeTheLayer()
