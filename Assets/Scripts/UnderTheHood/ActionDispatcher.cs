@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ActionDispatcher : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class ActionDispatcher : MonoBehaviour
     [SerializeField] MoverRigidBodyRightLeft moverRigidBody;
     [SerializeField] ObjectInstantiater objectInstantiater;
     [SerializeField] FruitState fruitState;
+    [SerializeField] InventoryPlayer inventoryPlayer;
+
+    [SerializeField] GameObject dynamitePrefab;
+    [SerializeField] GameObject applePrefab;
+
+
 
     public void UpButtonPressed()
     {
@@ -34,25 +41,36 @@ public class ActionDispatcher : MonoBehaviour
             positionUnstopper?.UnStopPossition();
         }
     }
-    public void MoveButtonPressed(float direction) 
+    public void MoveButtonPressed(float direction)
     {
-        moverRigidBody?.MoveHorizontal(direction); 
+        moverRigidBody?.MoveHorizontal(direction);
         Debug.Log("Персонаж двигается с направлением: " + direction);
     }
     public void ActionPressed()
     {
         if (PlayerState.Instance.IsStandingOnSecondPlatform && fruitState.IsTaiking)
         {
-            objectInstantiater?.InstantiateObject();
+            objectInstantiater?.InstantiateObject(applePrefab);
 
             fruitState.SetIsTaking(false);
-           
+
         }
         else if (PlayerState.Instance.IsNearTheTree && !FruitState.Instance.IsTaiking)
         {
 
             FruitState.Instance.SetIsTaking(true);
+
+        }
+    }
+    public void ActionEnterPressed()
+    {
+        if (inventoryPlayer != null && inventoryPlayer.currentDynamites > 0)
+        {
+            objectInstantiater.InstantiateObject(dynamitePrefab);
+            inventoryPlayer.currentDynamites--;
             
         }
+
+
     }
 }

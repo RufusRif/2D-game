@@ -8,6 +8,5 @@ public class PushRigidBody : MonoBehaviour
     public void Push()
     {
         rb.AddForce(sideToBePushed * pushForce, ForceMode2D.Impulse);
-       
     }
 }
