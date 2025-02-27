@@ -43,7 +43,6 @@ public class InventoryPlayer : MonoBehaviour
 
     private void UpdateDynamiteCountText()
     {
-
         dynamiteCountText.text = currentDynamites.ToString();
     }
     private void Start()

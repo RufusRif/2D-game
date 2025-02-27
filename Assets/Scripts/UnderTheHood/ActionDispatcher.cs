@@ -67,7 +67,7 @@ public class ActionDispatcher : MonoBehaviour
         if (inventoryPlayer != null && inventoryPlayer.currentDynamites > 0)
         {
             objectInstantiater.InstantiateObject(dynamitePrefab);
-            inventoryPlayer.currentDynamites--;
+            inventoryPlayer.MinusOneBomb();
             
         }
 
