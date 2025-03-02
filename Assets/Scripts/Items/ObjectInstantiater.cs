@@ -7,17 +7,6 @@ public class ObjectInstantiater : MonoBehaviour
     [SerializeField] private Transform thrownPoint;
     public GameObject InstantiateObject(GameObject prefab)
     {
-        if (thrownPoint == null)
-        {
-            Debug.LogError("Thrown point is not assigned!");
-            return null;
-        }
-
-        if (prefab == null)
-        {
-            Debug.LogError("Prefab is not assigned!");
-            return null;
-        }
         return Instantiate(prefab, thrownPoint.position, thrownPoint.rotation);
     }
 }

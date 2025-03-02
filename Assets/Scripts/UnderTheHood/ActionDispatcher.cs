@@ -8,6 +8,7 @@ public class ActionDispatcher : MonoBehaviour
     [SerializeField] PositionUnstopper positionUnstopper;
     [SerializeField] MoverRigidBodyRightLeft moverRigidBody;
     [SerializeField] ObjectInstantiater objectInstantiater;
+    [SerializeField] DynamiteSpawner dynamiteSpawner;
     [SerializeField] FruitState fruitState;
     [SerializeField] InventoryPlayer inventoryPlayer;
 
@@ -66,7 +67,8 @@ public class ActionDispatcher : MonoBehaviour
     {
         if (inventoryPlayer != null && inventoryPlayer.currentDynamites > 0)
         {
-            objectInstantiater.InstantiateObject(dynamitePrefab);
+            //objectInstantiater.InstantiateObject(dynamitePrefab);
+            dynamiteSpawner.SpawnAndInitializeDynamite();
             inventoryPlayer.MinusOneBomb();
             
         }
