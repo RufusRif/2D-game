@@ -13,7 +13,6 @@ public class UpdateManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); // Этот объект не будет уничтожаться при смене сцены
         
     }
-
     public void Register(IUpdatable obj)
     {
         if (!updatables.Contains(obj)) // Если объект не содержится в списке updatables

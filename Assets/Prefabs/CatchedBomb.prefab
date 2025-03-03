@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2576573061833069351}
   - component: {fileID: -1566948315675092059}
   - component: {fileID: -8661859693385261506}
+  - component: {fileID: -9069225697752003398}
   m_Layer: 15
   m_Name: CatchedBomb
   m_TagString: CatchedBomb
@@ -106,7 +107,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -181,4 +182,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScale: {fileID: 0}
   rbDynamite: {fileID: 6399203562481273505}
-  pushForce: 5
+  pushForce: 7
+--- !u!114 &-9069225697752003398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200054546042777327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e628159e1ecb9134b88e5d4ce379bf65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 6399203562481273505}
+  rotationSpeed: 1500
