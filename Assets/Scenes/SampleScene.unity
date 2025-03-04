@@ -610,7 +610,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.09071447}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -620,7 +620,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.33333334, y: 1}
+  m_Size: {x: 0.33333334, y: 0.8185711}
   m_EdgeRadius: 0
 --- !u!1 &254251063
 GameObject:
@@ -9443,6 +9443,7 @@ GameObject:
   - component: {fileID: 1595632268}
   - component: {fileID: 1595632269}
   - component: {fileID: 1595632270}
+  - component: {fileID: 1595632271}
   m_Layer: 14
   m_Name: Ground
   m_TagString: Ground
@@ -9803,7 +9804,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 18.092083, y: 0.96860504}
+  m_Size: {x: 56.092083, y: 0.96860504}
   m_EdgeRadius: 0
 --- !u!114 &1595632269
 MonoBehaviour:
@@ -9831,6 +9832,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TagOfTochedObject: FallingObject
+--- !u!114 &1595632271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595632264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a379d2e1bf1f714faa59912351511fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagOfTochedObject: CatchedBomb
 --- !u!1 &1646504270
 GameObject:
   m_ObjectHideFlags: 0
@@ -10814,7 +10828,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.08994423}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10824,7 +10838,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.33333334, y: 1}
+  m_Size: {x: 0.33333334, y: 0.8201115}
   m_EdgeRadius: 0
 --- !u!1 &2132613441
 GameObject:
