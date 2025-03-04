@@ -9,13 +9,7 @@ public class CollisionCheckerPlatform : MonoBehaviour
     public UnityEvent<Vector3> OnFruitOnFloor;
 
     private float heightOfSecondPlatform = 0f;
-    private void Start()
-    {
-        if (PlayerState.Instance == null)
-        {
-            Debug.LogError("PlayerState не найден!");
-        }
-    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

@@ -12,6 +12,7 @@ TagManager:
   - ThirdPanel
   - FallingObject
   - CatchedBomb
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - FallingObject
   - Ground
   - CatchedBomb
-  - 
+  - Enemy
   - 
   - 
   - 
