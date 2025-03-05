@@ -3110,7 +3110,7 @@ GameObject:
   - component: {fileID: 925778638}
   - component: {fileID: 925778637}
   - component: {fileID: 925778641}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3189,7 +3189,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &925778639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3254,7 +3254,7 @@ Transform:
   m_GameObject: {fileID: 925778636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -3, z: 0}
+  m_LocalPosition: {x: -6, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3304,6 +3304,50 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1141697127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1047076213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1047076215}
+  - component: {fileID: 1047076214}
+  m_Layer: 0
+  m_Name: DestoyerObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1047076214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047076213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d314880be165bd141bd35b869e1d1e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1047076215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047076213}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112125377
 GameObject:
@@ -9995,8 +10039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: {fileID: 74958122}
-  nameOfCollisionOnject: Player
+  nameOfCollisionOnbect: Player
   OnCollisionStayEvent:
     m_PersistentCalls:
       m_Calls:
@@ -10027,6 +10070,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1595632270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10067,9 +10113,9 @@ GameObject:
   - component: {fileID: 1646504275}
   - component: {fileID: 1646504279}
   - component: {fileID: 1646504276}
-  - component: {fileID: 1646504277}
   - component: {fileID: 1646504278}
   - component: {fileID: 1646504280}
+  - component: {fileID: 1646504281}
   m_Layer: 7
   m_Name: Bot
   m_TagString: Bot
@@ -10141,7 +10187,7 @@ Transform:
   m_GameObject: {fileID: 1646504270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.39, y: 2.79, z: 0}
+  m_LocalPosition: {x: 2, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10243,33 +10289,6 @@ MonoBehaviour:
   stonePrefab: {fileID: 200054546042777327, guid: b9a537425ffc8a049b111df148ef3535, type: 3}
   spawnPoint: {fileID: 1921511138}
   spriteFlipper: {fileID: 1646504280}
---- !u!114 &1646504277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646504270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bee97eff0877945a093a46d8e1b0f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FruitWasEaten:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1646504278}
-        m_TargetAssemblyTypeName: BotManager, Assembly-CSharp
-        m_MethodName: DropStones
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1646504278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10317,6 +10336,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78488b18b1cb2ed43b65f24c823c2672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1646504281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646504270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfCollisionOnbect: Fruit
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1646504278}
+        m_TargetAssemblyTypeName: BotManager, Assembly-CSharp
+        m_MethodName: DropStones
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1047076214}
+        m_TargetAssemblyTypeName: DestroyerObject, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1852102951
 GameObject:
   m_ObjectHideFlags: 0
@@ -11122,3 +11187,4 @@ SceneRoots:
   - {fileID: 1128162318}
   - {fileID: 337998195}
   - {fileID: 925778640}
+  - {fileID: 1047076215}

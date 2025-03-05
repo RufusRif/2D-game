@@ -37,7 +37,7 @@ public class InventoryPlayer : MonoBehaviour
         if (currentDynamites == 0)
         { 
             NumberOfBombsZero?.Invoke();
-            Debug.Log("событие что бомбы закончились сработало");
+            
         }
     }
 
