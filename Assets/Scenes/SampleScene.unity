@@ -892,6 +892,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &383817463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383817465}
+  - component: {fileID: 383817464}
+  m_Layer: 0
+  m_Name: EffectHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &383817464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383817463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e4305fa1ad82442b526891f2d72989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &383817465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383817463}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1367073, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402376233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,13 +3954,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1141697123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ba99a08353a9a4a8683c6dbc960b2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfTag: FallingObject
-  CaughtTheBomb:
+  nameOfCollisionOnbect: FallingObject
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1047076214}
+        m_TargetAssemblyTypeName: DestroyerObject, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 316117341}
         m_TargetAssemblyTypeName: InventoryPlayer, Assembly-CSharp
         m_MethodName: PlusOneBomb
@@ -3929,8 +3991,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 539926854}
-        m_TargetAssemblyTypeName: FruitDisplay, Assembly-CSharp
+      - m_Target: {fileID: 316117342}
+        m_TargetAssemblyTypeName: ActivateDisplay, Assembly-CSharp
         m_MethodName: SetImageAlphaFull
         m_Mode: 1
         m_Arguments:
@@ -3941,6 +4003,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1160570130
 GameObject:
   m_ObjectHideFlags: 0
@@ -9663,8 +9728,8 @@ GameObject:
   - component: {fileID: 1595632266}
   - component: {fileID: 1595632268}
   - component: {fileID: 1595632269}
-  - component: {fileID: 1595632270}
-  - component: {fileID: 1595632271}
+  - component: {fileID: 1595632272}
+  - component: {fileID: 1595632273}
   m_Layer: 14
   m_Name: Ground
   m_TagString: Ground
@@ -10073,7 +10138,10 @@ MonoBehaviour:
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1595632270
+  OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1595632272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10082,11 +10150,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 1595632264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a379d2e1bf1f714faa59912351511fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagOfTochedObject: FallingObject
---- !u!114 &1595632271
+  nameOfCollisionOnbect: FallingObject
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1047076214}
+        m_TargetAssemblyTypeName: DestroyerObject, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 383817464}
+        m_TargetAssemblyTypeName: EffectHandler, Assembly-CSharp
+        m_MethodName: PlayExplosion
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1595632273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10095,10 +10199,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 1595632264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a379d2e1bf1f714faa59912351511fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagOfTochedObject: CatchedBomb
+  nameOfCollisionOnbect: CatchedBomb
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1047076214}
+        m_TargetAssemblyTypeName: DestroyerObject, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 383817464}
+        m_TargetAssemblyTypeName: EffectHandler, Assembly-CSharp
+        m_MethodName: PlayExplosion
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1646504270
 GameObject:
   m_ObjectHideFlags: 0
@@ -10382,6 +10522,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1852102951
 GameObject:
   m_ObjectHideFlags: 0
@@ -11188,3 +11331,4 @@ SceneRoots:
   - {fileID: 337998195}
   - {fileID: 925778640}
   - {fileID: 1047076215}
+  - {fileID: 383817465}

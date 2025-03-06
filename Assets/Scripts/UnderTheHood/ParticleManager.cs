@@ -33,7 +33,7 @@ public class ParticleManager : MonoBehaviour
     }
     public void CreateDust()
     {
-        //Instantiate(footstepParticles, position, Quaternion.identity);
+       
         dust.Play();
     }
     public void PlayObjectLiftParticles(Vector3 position)

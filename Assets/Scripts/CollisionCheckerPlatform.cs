@@ -27,7 +27,6 @@ public class CollisionCheckerPlatform : MonoBehaviour
         {
             GameObject fruitPosition = collision.gameObject;
             OnFruitOnFloor?.Invoke(fruitPosition);
-            Debug.Log("Фрукт упал на 3-й этаж");
         }
     }
     void OnCollisionStay2D(Collision2D collision)

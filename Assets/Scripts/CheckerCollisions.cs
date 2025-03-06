@@ -9,6 +9,8 @@ public class CheckerCollisions : MonoBehaviour
     public UnityEvent OnCollisionExitEvent;
     public UnityEvent<GameObject> OnCollisionEnterEvent;
 
+    public UnityEvent<Vector3> OnExplosionNeeded;
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
@@ -27,12 +29,13 @@ public class CheckerCollisions : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
         {
-            Debug.Log("Событие столкновение с яблоком произошло");
             GameObject someObject = collision.gameObject;
             OnCollisionEnterEvent?.Invoke(someObject);
+
+            Vector3 explosionPosition = collision.transform.position;
+            OnExplosionNeeded?.Invoke(explosionPosition);
         }
     }
-   
 }
 
 
