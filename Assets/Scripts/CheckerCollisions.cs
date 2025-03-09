@@ -29,12 +29,18 @@ public class CheckerCollisions : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
         {
+            Debug.Log("столкновение OnCollisionEnter2D отловлено");
             GameObject someObject = collision.gameObject;
             OnCollisionEnterEvent?.Invoke(someObject);
 
             Vector3 explosionPosition = collision.transform.position;
             OnExplosionNeeded?.Invoke(explosionPosition);
         }
+    }
+
+    public void SubscribeToCollisionEvent(UnityAction<GameObject> action)
+    {
+        OnCollisionEnterEvent.AddListener(action);
     }
 }
 
