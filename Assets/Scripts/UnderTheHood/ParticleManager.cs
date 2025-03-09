@@ -9,7 +9,8 @@ public class ParticleManager : MonoBehaviour
 
     public ParticleSystem explosionEffect;
     public ParticleSystem dust;
-    public ParticleSystem objectLiftParticles;
+    public ParticleSystem DynamiteExplotionOnEnemy;
+
 
     private void Awake()
     {
@@ -31,21 +32,21 @@ public class ParticleManager : MonoBehaviour
 
         Destroy(explosionInstance.gameObject, explosionInstance.main.duration);
     }
+    
+    public void PlayDynamiteExplotionOnEnemy(Vector3 position)
+    {
+
+
+        ParticleSystem explosionInstanceOnEnemy =  Instantiate(DynamiteExplotionOnEnemy, position, Quaternion.identity);
+        explosionInstanceOnEnemy.Play();
+
+        Destroy(explosionInstanceOnEnemy.gameObject, explosionInstanceOnEnemy.main.duration);
+    }
+
     public void CreateDust()
     {
-       
+
         dust.Play();
-    }
-    public void PlayObjectLiftParticles(Vector3 position)
-    {
-        if (objectLiftParticles != null)
-        {
-            Instantiate(objectLiftParticles, position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogError("Object lift particles are not assigned!");
-        }
     }
 }
 

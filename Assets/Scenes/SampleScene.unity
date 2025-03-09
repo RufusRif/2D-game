@@ -3408,7 +3408,19 @@ MonoBehaviour:
         m_CallState: 2
   OnExplosionNeeded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 383817464}
+        m_TargetAssemblyTypeName: EffectHandler, Assembly-CSharp
+        m_MethodName: PlayDynamiteExplotionOnEnemy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1020708555
 GameObject:
   m_ObjectHideFlags: 0
@@ -9637,7 +9649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 3463755511973134911, guid: f8b8e2c7c5e4cb2499ffa0a00c288f0e, type: 3}
   dust: {fileID: 1183096908}
-  objectLiftParticles: {fileID: 0}
+  DynamiteExplotionOnEnemy: {fileID: 3463755511973134911, guid: 875f0329b69fb5e47940d6cd8f2112e4, type: 3}
 --- !u!4 &1544064108
 Transform:
   m_ObjectHideFlags: 0
@@ -11463,9 +11475,9 @@ SceneRoots:
   - {fileID: 1337193331}
   - {fileID: 74958125}
   - {fileID: 1544064108}
+  - {fileID: 383817465}
   - {fileID: 316117340}
   - {fileID: 1128162318}
   - {fileID: 337998195}
   - {fileID: 925778640}
   - {fileID: 1047076215}
-  - {fileID: 383817465}
