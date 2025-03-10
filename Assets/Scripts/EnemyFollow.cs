@@ -4,9 +4,10 @@ public class EnemyFollow : MonoBehaviour, IUpdatable
 {
     [SerializeField] float speed;
     [SerializeField] Transform player;
-   public void CustomUpdate()
+    public void CustomUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+        transform.position = new Vector2(Mathf.MoveTowards(transform.position.x, player.transform.position.x, speed * Time.deltaTime), transform.position.y);
     }
     private void OnEnable()
     {
