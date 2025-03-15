@@ -31,16 +31,15 @@ public class BotMovement : MonoBehaviour, IUpdatable
     {
         while (true)
         {
-            
+
             moveDirection = Random.value > 0.5f ? 1f : -1f;
-            
             spriteFlipper.SetFlipDirection(moveDirection);
-           
+
             float moveTime = Random.Range(minMoveTime, maxMoveTime);
             isMoving = true;
             yield return new WaitForSeconds(moveTime);
 
-            
+
             isMoving = false;
             float stopTime = Random.Range(minStopTime, maxStopTime);
             yield return new WaitForSeconds(stopTime);
@@ -49,7 +48,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
 
     private void ChangeMoveDirection()
     {
-       
+
         if (transform.position.x <= -8.4 && moveDirection < 0)
         {
             moveDirection = 1;
@@ -71,11 +70,11 @@ public class BotMovement : MonoBehaviour, IUpdatable
         ChangeMoveDirection();
         if (isMovingToTarget)
         {
-           
+
             if (Vector2.Distance(transform.position, targetPosition) > 0.1f)
             {
                 Vector2 direction = (targetPosition - transform.position).normalized;
-                rb.linearVelocityX =direction.x * speed * 2f; 
+                rb.linearVelocityX = direction.x * speed * 2f;
                 moveDirection = Mathf.Sign(direction.x);
 
                 spriteFlipper.SetFlipDirection(moveDirection);
@@ -84,7 +83,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
             }
             else
             {
-                
+
                 rb.linearVelocityX = 0;
                 isMovingToTarget = false;
                 animator.SetFloat("xVelocity", 0);
@@ -92,7 +91,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
         }
         else if (isMoving)
         {
-            
+
             rb.linearVelocityX = moveDirection * speed;
 
             animator.SetFloat("xVelocity", Mathf.Abs(moveDirection));

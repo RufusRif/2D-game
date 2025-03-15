@@ -29,7 +29,7 @@ public class CheckerCollisions : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
         {
-            Debug.Log("столкновение OnCollisionEnter2D отловлено");
+            
             GameObject someObject = collision.gameObject;
             OnCollisionEnterEvent?.Invoke(someObject);
 

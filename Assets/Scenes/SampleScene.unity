@@ -3153,10 +3153,12 @@ GameObject:
   - component: {fileID: 925778639}
   - component: {fileID: 925778638}
   - component: {fileID: 925778637}
-  - component: {fileID: 925778641}
+  - component: {fileID: 925778648}
   - component: {fileID: 925778642}
   - component: {fileID: 925778643}
   - component: {fileID: 925778644}
+  - component: {fileID: 925778645}
+  - component: {fileID: 925778649}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -3301,27 +3303,13 @@ Transform:
   m_GameObject: {fileID: 925778636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2076475165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &925778641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925778636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d150f2a6903e846a753bd1b58defbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  player: {fileID: 1141697127}
 --- !u!114 &925778642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3421,6 +3409,90 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &925778645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925778636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78488b18b1cb2ed43b65f24c823c2672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &925778648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925778636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d150f2a6903e846a753bd1b58defbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteFlipper: {fileID: 925778645}
+  speed: 3
+  minMoveTime: 2
+  maxMoveTime: 5
+--- !u!114 &925778649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925778636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa07ff173386f646976a3a23f499365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPlayerEnteredZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 925778648}
+        m_TargetAssemblyTypeName: Enemy1Behavior, Assembly-CSharp
+        m_MethodName: MoveToTarget
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1141697127}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 925778648}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopCoroutine
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: RandomMovementRoutine
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlayerExitedZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 925778648}
+        m_TargetAssemblyTypeName: Enemy1Behavior, Assembly-CSharp
+        m_MethodName: ReturtToCorutine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isInZone: 0
+  playerTransform: {fileID: 1141697127}
 --- !u!1 &1020708555
 GameObject:
   m_ObjectHideFlags: 0

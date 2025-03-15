@@ -21,10 +21,7 @@ public class BotManager : MonoBehaviour
             botMovement.isMoving = true;
             StartCoroutine(botMovement.RandomMovementRoutine());
         }
-        else
-        {
-            Debug.LogError("BotMovement is not assigned or found on the object!");
-        }
+        
     }
     public void NoticeFruit(GameObject fruit)
     {
