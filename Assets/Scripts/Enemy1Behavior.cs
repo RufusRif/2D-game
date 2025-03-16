@@ -20,6 +20,7 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
     private bool isMovingToTarget = false;
     private Coroutine randomMovementCoroutine;
     private Transform playerTransform;
+    private Animator animator;
 
 
 
@@ -29,6 +30,7 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
         spriteFlipper = GetComponent<SpriteFlipper>();
         rb = GetComponent<Rigidbody2D>();
         randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
+        animator = GetComponent<Animator>();
     }
 
     public IEnumerator RandomMovementRoutine()
@@ -85,28 +87,32 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
 
             if (Vector2.Distance(transform.position, targetPosition) > 0.1f)
             {
-                
+
                 Vector2 direction = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
                 rb.linearVelocityX = direction.x * speed * 2f;
                 moveDirection = Mathf.Sign(direction.x);
 
                 spriteFlipper.SetFlipDirection(moveDirection);
+                animator.SetFloat("xVelocity", 1);
             }
 
             else
             {
                 rb.linearVelocityX = 0;
                 isMovingToTarget = false;
+                animator.SetFloat("xVelocity", 0);
             }
         }
 
         else if (isMoving)
         {
             rb.linearVelocityX = moveDirection * speed;
+            animator.SetFloat("xVelocity", 1);
         }
         else
         {
             rb.linearVelocityX = 0;
+            animator.SetFloat("xVelocity", 0);
         }
         spriteFlipper.SetFlipDirection(-moveDirection);
 

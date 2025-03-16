@@ -3,7 +3,6 @@ using UnityEngine;
 public class DynamiteAttackHandler : MonoBehaviour
 {
     [SerializeField] private int damage = 1; 
-
     public void AttackEnemy(GameObject target)
     {
         // Проверяем, реализует ли объект интерфейс IDamageable
@@ -12,6 +11,7 @@ public class DynamiteAttackHandler : MonoBehaviour
         {
             
             damageable.TakeDamage(damage);
+            
         }
     }
 }

@@ -18,13 +18,13 @@ public class AnimationController : MonoBehaviour, IUpdatable
 
     public void CustomUpdate()
     {
-        
+
         animator.SetFloat("yVelocity", rb.linearVelocityY);
 
-        
+
         if (Mathf.Approximately(rb.linearVelocityY, 0))
         {
-            animator.SetBool("isJumping", false); 
+            animator.SetBool("isJumping", false);
         }
     }
     public void PlayJumpAnimation()
