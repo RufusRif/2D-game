@@ -10,7 +10,7 @@ public class UpdateManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Этот объект не будет уничтожаться при смене сцены
+        DontDestroyOnLoad(gameObject); // Этот объект не будет уничтожаться при смене сцен
         
     }
     public void Register(IUpdatable obj)

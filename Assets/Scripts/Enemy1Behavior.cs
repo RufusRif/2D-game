@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Animations;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,13 +7,11 @@ using UnityEngine.EventSystems;
 
 public class Enemy1Behavior : MonoBehaviour, IUpdatable
 {
-
     [SerializeField] SpriteFlipper spriteFlipper;
-
-
     [SerializeField] float speed = 3f;
     [SerializeField] float minMoveTime = 2;
     [SerializeField] float maxMoveTime = 5;
+
     private bool isMoving = true;
     private Rigidbody2D rb;
     private float moveDirection;
@@ -20,17 +19,14 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
     private bool isMovingToTarget = false;
     private Coroutine randomMovementCoroutine;
     private Transform playerTransform;
-    private Animator animator;
 
-
-
-
+    private AnimationController animatonController;
     public void Start()
     {
         spriteFlipper = GetComponent<SpriteFlipper>();
         rb = GetComponent<Rigidbody2D>();
         randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
-        animator = GetComponent<Animator>();
+        animatonController = GetComponent<AnimationController>();
     }
 
     public IEnumerator RandomMovementRoutine()
@@ -39,7 +35,7 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
         while (true)
         {
             moveDirection = Random.value > 0.5f ? 1f : -1f;
-            spriteFlipper.SetFlipDirection(moveDirection);
+            spriteFlipper.SetFlipDirection(-moveDirection);
 
             isMoving = true;
             float movingTime = Random.Range(minMoveTime, maxMoveTime);
@@ -58,8 +54,8 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
         StopCoroutine(randomMovementCoroutine);
         playerTransform = player;
         isMovingToTarget = true;
+        
     }
-
     public void ReturtToCorutine()
     {
         isMovingToTarget = false;
@@ -67,20 +63,20 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
     }
     public void ChangeMoveDirection()
     {
-        if (transform.position.x <= -8.4 && moveDirection == -1)
+        if (transform.position.x <= -8 && moveDirection <0)
         {
             moveDirection = 1;
         }
-        else if (transform.position.x >= 8.4 && moveDirection == 1)
+        else if (transform.position.x >= 8 && moveDirection >0)
         {
             moveDirection = -1;
         }
-        spriteFlipper.SetFlipDirection(moveDirection);
-
+        spriteFlipper.SetFlipDirection(-moveDirection);
     }
     public void CustomUpdate()
     {
         ChangeMoveDirection();
+
         if (isMovingToTarget)
         {
             targetPosition = playerTransform.position;
@@ -92,29 +88,31 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
                 rb.linearVelocityX = direction.x * speed * 2f;
                 moveDirection = Mathf.Sign(direction.x);
 
-                spriteFlipper.SetFlipDirection(moveDirection);
-                animator.SetFloat("xVelocity", 1);
+                spriteFlipper.SetFlipDirection(-moveDirection);
+                animatonController.SetRunAnimation(Mathf.Abs(direction.x));
+                
             }
 
             else
             {
                 rb.linearVelocityX = 0;
                 isMovingToTarget = false;
-                animator.SetFloat("xVelocity", 0);
+                animatonController.SetRunAnimation(0);
             }
         }
 
         else if (isMoving)
         {
             rb.linearVelocityX = moveDirection * speed;
-            animator.SetFloat("xVelocity", 1);
+            animatonController.SetRunAnimation(Mathf.Abs(moveDirection));
+
         }
         else
         {
             rb.linearVelocityX = 0;
-            animator.SetFloat("xVelocity", 0);
+            animatonController.SetRunAnimation(0);
         }
-        spriteFlipper.SetFlipDirection(-moveDirection);
+        //spriteFlipper.SetFlipDirection(-moveDirection);
 
     }
     private void OnEnable()

@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
 
 public class BotMovement : MonoBehaviour, IUpdatable
 {
@@ -19,33 +19,33 @@ public class BotMovement : MonoBehaviour, IUpdatable
     [SerializeField] private GameObject stonePrefab;
     [SerializeField] private Transform spawnPoint;
     private Vector3 targetPosition;
-    private Animator animator;
+    
+    private AnimationController animationController;
 
     [SerializeField] private SpriteFlipper spriteFlipper;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animationController = GetComponent<AnimationController>();
     }
     public IEnumerator RandomMovementRoutine()
     {
         while (true)
         {
-
             moveDirection = Random.value > 0.5f ? 1f : -1f;
             spriteFlipper.SetFlipDirection(moveDirection);
 
-            float moveTime = Random.Range(minMoveTime, maxMoveTime);
             isMoving = true;
+            float moveTime = Random.Range(minMoveTime, maxMoveTime);
+           
             yield return new WaitForSeconds(moveTime);
-
 
             isMoving = false;
             float stopTime = Random.Range(minStopTime, maxStopTime);
+
             yield return new WaitForSeconds(stopTime);
         }
     }
-
     private void ChangeMoveDirection()
     {
 
@@ -76,17 +76,16 @@ public class BotMovement : MonoBehaviour, IUpdatable
                 Vector2 direction = (targetPosition - transform.position).normalized;
                 rb.linearVelocityX = direction.x * speed * 2f;
                 moveDirection = Mathf.Sign(direction.x);
-
                 spriteFlipper.SetFlipDirection(moveDirection);
 
-                animator.SetFloat("xVelocity", Mathf.Abs(direction.x));
+                animationController.SetRunAnimation(Mathf.Abs(direction.x));
             }
             else
             {
 
                 rb.linearVelocityX = 0;
                 isMovingToTarget = false;
-                animator.SetFloat("xVelocity", 0);
+                animationController.SetRunAnimation(0);
             }
         }
         else if (isMoving)
@@ -94,13 +93,14 @@ public class BotMovement : MonoBehaviour, IUpdatable
 
             rb.linearVelocityX = moveDirection * speed;
 
-            animator.SetFloat("xVelocity", Mathf.Abs(moveDirection));
+
+            animationController.SetRunAnimation(Mathf.Abs(moveDirection)); //возвращает абсолютное значение горизонтальной скорости. (1 или 0)
         }
         else
         {
             rb.linearVelocityX = 0;
 
-            animator.SetFloat("xVelocity", 0);
+            animationController.SetRunAnimation(0);
         }
 
         spriteFlipper.SetFlipDirection(moveDirection);
