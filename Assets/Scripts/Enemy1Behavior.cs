@@ -112,7 +112,7 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
             rb.linearVelocityX = 0;
             animatonController.SetRunAnimation(0);
         }
-        //spriteFlipper.SetFlipDirection(-moveDirection);
+        
 
     }
     private void OnEnable()
