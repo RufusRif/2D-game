@@ -48,7 +48,6 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
         }
 
     }
-
     public void MoveToTarget(Transform player)
     {
         StopCoroutine(randomMovementCoroutine);
@@ -72,6 +71,27 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
             moveDirection = -1;
         }
         spriteFlipper.SetFlipDirection(-moveDirection);
+    }
+
+    public IEnumerator StopAfterAtackRoutine()
+    {
+        isMovingToTarget = false;
+        isMoving = false;
+        yield return new WaitForSeconds(2f);
+
+        if (playerTransform != null && Mathf.Abs(playerTransform.position.y - transform.position.y) < 0.1f)
+        {
+            // Если игрок всё ещё на том же этаже, бежим к нему снова
+            MoveToTarget(playerTransform);
+        }
+        else
+        {
+            StartCoroutine(RandomMovementRoutine());
+        }
+    }
+    public void AfterAtack()
+    {
+        StartCoroutine(StopAfterAtackRoutine());
     }
     public void CustomUpdate()
     {

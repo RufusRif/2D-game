@@ -30,21 +30,7 @@ public class AnimationController : MonoBehaviour, IUpdatable
             animator.SetBool("isJumping", false);
         }  
     }
-    public void HitAnimation()
-    {
-        if(HasAnimatorParameter("isHit", AnimatorControllerParameterType.Bool))
-        {
-            animator.SetBool("isHit", true);
-            
-        }
-    }
-    public void StopHitAnimation()
-    {
-        if (HasAnimatorParameter("isHit", AnimatorControllerParameterType.Bool))
-        {
-            animator.SetBool("isHit", false); 
-        }
-    }
+   
 
     public void UpdateMovementAnimations()
     {
