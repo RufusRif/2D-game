@@ -77,7 +77,7 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
     {
         isMovingToTarget = false;
         isMoving = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
         if (playerTransform != null && Mathf.Abs(playerTransform.position.y - transform.position.y) < 0.1f)
         {

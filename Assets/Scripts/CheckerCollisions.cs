@@ -3,13 +3,16 @@ using UnityEngine.Events;
 
 public class CheckerCollisions : MonoBehaviour
 {
-    
+
     [SerializeField] private string nameOfCollisionOnbect;
     public UnityEvent OnCollisionStayEvent;
     public UnityEvent OnCollisionExitEvent;
+
     public UnityEvent<GameObject> OnCollisionEnterEvent;
 
     public UnityEvent<Vector3> OnExplosionNeeded;
+
+    public UnityEvent OnTriggerEnterEvent;
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -29,7 +32,7 @@ public class CheckerCollisions : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
         {
-            
+
             GameObject someObject = collision.gameObject;
             OnCollisionEnterEvent?.Invoke(someObject);
 
@@ -38,6 +41,15 @@ public class CheckerCollisions : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
+        {
+            GameObject someObject = collision.gameObject;
+            OnTriggerEnterEvent?.Invoke();
+        }
+        
+    }
     public void SubscribeToCollisionEvent(UnityAction<GameObject> action)
     {
         OnCollisionEnterEvent.AddListener(action);

@@ -3774,6 +3774,7 @@ GameObject:
   - component: {fileID: 1141697136}
   - component: {fileID: 1141697137}
   - component: {fileID: 1141697140}
+  - component: {fileID: 1141697141}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4232,6 +4233,43 @@ MonoBehaviour:
       - m_Target: {fileID: 316117342}
         m_TargetAssemblyTypeName: ActivateDisplay, Assembly-CSharp
         m_MethodName: SetImageAlphaFull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1141697141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141697123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfCollisionOnbect: Enemy
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1141697139}
+        m_TargetAssemblyTypeName: AnimationController, Assembly-CSharp
+        m_MethodName: HitPlayerAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
