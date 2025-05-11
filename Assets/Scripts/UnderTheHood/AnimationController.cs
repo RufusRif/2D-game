@@ -32,11 +32,9 @@ public class AnimationController : MonoBehaviour, IUpdatable
     }
     public void HitPlayerAnimation()
     {
-        if (HasAnimatorParameter("HitPlayer", AnimatorControllerParameterType.Trigger))
-        {
-            animator.SetTrigger("HitPlayer");
-        }
+        animator.SetTrigger("HitTrigger");
     }
+    
 
     public void UpdateMovementAnimations()
     {

@@ -1,15 +1,20 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private int currentHealth;
     [SerializeField] private int maxHealth;
 
+
+
+    public UnityEvent EnemyHippoDead;
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        Debug.Log($"{gameObject.name} takes {damage} damage! Current health: {currentHealth}");
+        
         if (!IsAlive())
         {
             Die();
@@ -22,5 +27,6 @@ public class HealthEnemy : MonoBehaviour, IDamageable
     private void Die()
     {
         Destroy(transform.parent.gameObject);
+        EnemyHippoDead?.Invoke();
     }
 }

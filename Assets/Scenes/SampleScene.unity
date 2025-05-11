@@ -3154,13 +3154,13 @@ GameObject:
   - component: {fileID: 925778651}
   - component: {fileID: 925778652}
   - component: {fileID: 925778650}
+  - component: {fileID: 925778653}
   - component: {fileID: 925778648}
   - component: {fileID: 925778642}
   - component: {fileID: 925778643}
   - component: {fileID: 925778644}
   - component: {fileID: 925778645}
   - component: {fileID: 925778649}
-  - component: {fileID: 925778653}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -3204,7 +3204,7 @@ Transform:
   m_GameObject: {fileID: 925778636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -3, z: 0}
+  m_LocalPosition: {x: -8, y: -3.45, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3270,7 +3270,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1141697139}
+        m_TargetAssemblyTypeName: AnimationController, Assembly-CSharp
+        m_MethodName: HitPlayerAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &925778644
@@ -3334,6 +3349,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &925778645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3774,7 +3792,6 @@ GameObject:
   - component: {fileID: 1141697136}
   - component: {fileID: 1141697137}
   - component: {fileID: 1141697140}
-  - component: {fileID: 1141697141}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4245,41 +4262,7 @@ MonoBehaviour:
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1141697141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141697123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfCollisionOnbect: Enemy
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1141697139}
-        m_TargetAssemblyTypeName: AnimationController, Assembly-CSharp
-        m_MethodName: HitPlayerAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnExplosionNeeded:
+  OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1160570130
@@ -10417,6 +10400,9 @@ MonoBehaviour:
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1595632272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10466,6 +10452,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1595632273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10515,6 +10504,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1646504270
 GameObject:
   m_ObjectHideFlags: 0
@@ -10604,7 +10596,7 @@ Transform:
   m_GameObject: {fileID: 1646504270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 3, z: 0}
+  m_LocalPosition: {x: 2, y: 2.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10800,6 +10792,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1646504282
@@ -11357,6 +11352,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 5
   maxHealth: 5
+  EnemyHippoDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2076475164}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2101907617
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ TagManager:
   - FallingObject
   - CatchedBomb
   - Enemy
+  - Soul
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - FallingObject
   - Ground
   - CatchedBomb
-  - 
+  - Soul
   - 
   - 
   - 
