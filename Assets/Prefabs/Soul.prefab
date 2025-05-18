@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4439765865574915738}
   - component: {fileID: 905495959221676592}
   - component: {fileID: -6080657944836347971}
+  - component: {fileID: 1135223714601280339}
+  - component: {fileID: 6169837348592934784}
   m_Layer: 16
   m_Name: Soul
   m_TagString: Soul
@@ -115,3 +117,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1135223714601280339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100281553414629202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2454c30d89e26334eaa9d666b6d71d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: -6080657944836347971}
+  sideToBePushed: {x: 0, y: 1}
+  pushForce: 2
+--- !u!114 &6169837348592934784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100281553414629202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c854ec5f196add14a9af175afffce345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushRigidBody: {fileID: 1135223714601280339}
+  delay: 0.05
