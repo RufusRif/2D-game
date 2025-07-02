@@ -1,6 +1,7 @@
 using UnityEngine;
-using UnityEngine.Events;
+//using UnityEngine.Events;
 using UnityEngine.UI;
+using UltEvents;
 public class HealthSystem : MonoBehaviour, IDamageable
 {
     [SerializeField] private Image[] lives;
@@ -8,7 +9,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
     [SerializeField] private Sprite emptyLive;
     [SerializeField] private int health;
     [SerializeField] private int numberOfLives;
-    public UnityEvent OnDeath;
+
+    public UltEvents.UltEvent<GameObject> OnDeath;
+
+
     private void Start()
     {
         UpdateLivesUI();
@@ -36,7 +40,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
         if (!IsAlive())
         {
-            OnDeath.Invoke();
+            OnDeath.Invoke(gameObject);
         }
     }
     public bool IsAlive()
@@ -49,10 +53,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
         health = Mathf.Clamp(health, 0, numberOfLives);
         UpdateLivesUI();
     }
-    public void Die()
-    {
-        
-
-        transform.parent.gameObject.SetActive(false);
-    }
+    //public void Die()
+    //{
+    //    transform.parent.gameObject.SetActive(false);
+    //}
 }
