@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
     public void Die(GameObject target)
     {
         target.SetActive(false);
+        StartCoroutine(ShowDeathCanvasAfterDelay());
 
     }
 
@@ -34,6 +36,12 @@ public class GameManager : MonoBehaviour
     {
         ResumeGame();
         SceneManager.LoadScene("StartScene");
+    }
+
+    private IEnumerator ShowDeathCanvasAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        ShowDeathCanvas();
     }
     
 }
