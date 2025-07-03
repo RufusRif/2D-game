@@ -18,7 +18,7 @@ public class ParticleManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this; // Устанавливаем текущий объект как синглтон
-            DontDestroyOnLoad(gameObject); // Не уничтожаем объект при загрузке новой сцены
+            //DontDestroyOnLoad(gameObject); // Не уничтожаем объект при загрузке новой сцены
         }
         else
         {

@@ -14,7 +14,7 @@ public class PlayerState : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     // Установка состояния: висит/не висит
     public void SetHangingState(bool isHanging)
