@@ -29,13 +29,6 @@ public class MoverRigidBodyRightLeft : MonoBehaviour, IUpdatable
 
     public void CustomUpdate()
     {
-        float coordinateY = 1.69f;
-        if (transform.position.y >= coordinateY)
-        {
-            transform.position = new Vector3(transform.position.x,coordinateY,transform.position.z);
-            rb.linearVelocityY = 0f;
-        }
-
         if (!playerState.IsHanging)
         {
             rb.linearVelocityX = moveInput * speed;

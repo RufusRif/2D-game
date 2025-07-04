@@ -9,12 +9,10 @@ public class PlayerState : MonoBehaviour
     [field: SerializeField] public bool IsNearTheTree { get; private set; }
     [field: SerializeField] public bool IsOnGround { get; private set; }
     
-
-
     private void Awake()
     {
         Instance = this;
-        //DontDestroyOnLoad(gameObject);
+        
     }
     // Установка состояния: висит/не висит
     public void SetHangingState(bool isHanging)

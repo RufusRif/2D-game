@@ -6,15 +6,12 @@ public class CollisionCheckerPlatform : MonoBehaviour
     [SerializeField] private Collider2D currentCollider; // Коллайдер этой панели
 
     public UnityEvent OnTouchedFromBelow;
-    public UnityEvent<GameObject> OnFruitOnFloor;
-
     private float heightOfSecondPlatform = 0f;
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
             Vector3 playerPosition = collision.transform.position;
             float panelTopY = currentCollider.bounds.center.y;
 
@@ -22,11 +19,6 @@ public class CollisionCheckerPlatform : MonoBehaviour
             {
                 OnTouchedFromBelow?.Invoke();
             }
-        }
-        else if (collision.gameObject.CompareTag("Fruit"))
-        {
-            GameObject fruitPosition = collision.gameObject;
-            OnFruitOnFloor?.Invoke(fruitPosition);
         }
     }
     void OnCollisionStay2D(Collision2D collision)
@@ -55,7 +47,6 @@ public class CollisionCheckerPlatform : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerState.Instance.SetHangingState(false);

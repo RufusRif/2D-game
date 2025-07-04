@@ -3489,7 +3489,7 @@ Transform:
   m_GameObject: {fileID: 925778636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -3.45, z: 0}
+  m_LocalPosition: {x: -8, y: -3.47, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4297,7 +4297,7 @@ Transform:
   m_GameObject: {fileID: 1141697123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -1.4, z: 0}
+  m_LocalPosition: {x: 6, y: -1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11039,7 +11039,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 56.092083, y: 0.96860504}
+  m_Size: {x: 56.092083, y: 0.95}
   m_EdgeRadius: 0
 --- !u!114 &1595632269
 MonoBehaviour:
@@ -11286,7 +11286,7 @@ Transform:
   m_GameObject: {fileID: 1646504270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 2.79, z: 0}
+  m_LocalPosition: {x: 2, y: 2.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -11974,13 +11974,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2049580374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae31ae9e4e1badf469288c02c5eec06b, type: 3}
+  m_Script: {fileID: 11500000, guid: d13122e1284e80c44a016d603acd915a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentCollider: {fileID: 2049580376}
-  OnTouchedFromBelow:
-    m_PersistentCalls:
-      m_Calls: []
   OnFruitOnFloor:
     m_PersistentCalls:
       m_Calls:
