@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,19 +6,28 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverCanvas;
+    [SerializeField] private GameObject gameWinCanvas;
     public void Die(GameObject target)
     {
         target.SetActive(false);
-        StartCoroutine(ShowDeathCanvasAfterDelay());
-
+       
+        StartCoroutine(ShowCanvasWithDelay(ShowDeathCanvas));
     }
-
+    public void Win()
+    {
+        StartCoroutine(ShowCanvasWithDelay(ShowWinCanvas));
+    }
+    public void ShowWinCanvas()
+    {
+        gameWinCanvas.SetActive(true);
+        StopGame();
+    }
     public void ShowDeathCanvas()
     {
         gameOverCanvas.SetActive(true);
         StopGame();
-    }
 
+    }
     public void StopGame()
     {
         Time.timeScale = 0f;
@@ -30,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         ResumeGame();
         SceneManager.LoadScene("GameScene");
-        
+
     }
     public void GoToMenu()
     {
@@ -38,10 +48,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("StartScene");
     }
 
-    private IEnumerator ShowDeathCanvasAfterDelay()
+    private IEnumerator ShowCanvasWithDelay(Action showCanvas)
     {
         yield return new WaitForSeconds(3f);
-        ShowDeathCanvas();
+        showCanvas?.Invoke();
     }
-    
 }
