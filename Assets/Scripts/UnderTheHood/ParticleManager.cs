@@ -18,7 +18,7 @@ public class ParticleManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this; // Устанавливаем текущий объект как синглтон
-            //DontDestroyOnLoad(gameObject); // Не уничтожаем объект при загрузке новой сцены
+
         }
         else
         {
@@ -32,12 +32,12 @@ public class ParticleManager : MonoBehaviour
 
         Destroy(explosionInstance.gameObject, explosionInstance.main.duration);
     }
-    
+
     public void PlayDynamiteExplotionOnEnemy(Vector3 position)
     {
 
 
-        ParticleSystem explosionInstanceOnEnemy =  Instantiate(DynamiteExplotionOnEnemy, position, Quaternion.identity);
+        ParticleSystem explosionInstanceOnEnemy = Instantiate(DynamiteExplotionOnEnemy, position, Quaternion.identity);
         explosionInstanceOnEnemy.Play();
 
         Destroy(explosionInstanceOnEnemy.gameObject, explosionInstanceOnEnemy.main.duration);
@@ -45,8 +45,11 @@ public class ParticleManager : MonoBehaviour
 
     public void CreateDust()
     {
+        if (PlayerState.Instance.IsOnGround || PlayerState.Instance.IsStandingOnPlatform || PlayerState.Instance.IsStandingOnSecondPlatform)
+        {
+            dust.Play();
+        }
 
-        dust.Play();
     }
 }
 
