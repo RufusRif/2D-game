@@ -23,7 +23,7 @@ public class PlayerInputReader : MonoBehaviour
             OnMove?.Invoke(direction);
         };
 
-        inputActions.Player.Move.canceled += _ => OnMove?.Invoke(0);//
+        inputActions.Player.Move.canceled += _ => OnMove?.Invoke(0);
 
         inputActions.Player.Jump.performed += _ => OnJump?.Invoke();
 
