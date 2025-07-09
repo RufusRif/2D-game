@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class ActionDispatcher : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     [SerializeField] PushRigidBody pushRigidBody;
     [SerializeField] ChangerLayer changerLayer;
     [SerializeField] PositionUnstopper positionUnstopper;
@@ -37,10 +38,11 @@ public class ActionDispatcher : MonoBehaviour
         {
             changerLayer?.ChangeTheLayer();
         }
-        else if (PlayerState.Instance.IsHanging)
+        else if (PlayerState.Instance.IsHanging || (!PlayerState.Instance.IsStandingOnPlatform && !PlayerState.Instance.IsHanging))
         {
             positionUnstopper?.UnStopPossition();
         }
+        
     }
     public void MoveButtonPressed(float direction)
     {
@@ -67,7 +69,7 @@ public class ActionDispatcher : MonoBehaviour
     {
         if (inventoryPlayer != null && inventoryPlayer.currentDynamites > 0)
         {
-            //objectInstantiater.InstantiateObject(dynamitePrefab);
+           
             dynamiteSpawner.SpawnAndInitializeDynamite();
             inventoryPlayer.MinusOneBomb();
             

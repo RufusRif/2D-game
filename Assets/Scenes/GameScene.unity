@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4d280786484c34d9e6141c4aefc706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1141697123}
   pushRigidBody: {fileID: 1141697130}
   changerLayer: {fileID: 1141697132}
   positionUnstopper: {fileID: 1141697133}
@@ -4343,7 +4344,6 @@ GameObject:
   - component: {fileID: 925778643}
   - component: {fileID: 925778644}
   - component: {fileID: 925778645}
-  - component: {fileID: 925778649}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -4387,7 +4387,7 @@ Transform:
   m_GameObject: {fileID: 925778636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -3.47, z: 0}
+  m_LocalPosition: {x: -3, y: -3, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4443,7 +4443,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 925778648}
         m_TargetAssemblyTypeName: Enemy1Behavior, Assembly-CSharp
-        m_MethodName: AfterAtack
+        m_MethodName: AfterAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4560,64 +4560,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteFlipper: {fileID: 925778645}
-  speed: 3
+  speed: 2
   minMoveTime: 2
   maxMoveTime: 5
---- !u!114 &925778649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925778636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa07ff173386f646976a3a23f499365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnPlayerEnteredZone:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 925778648}
-        m_TargetAssemblyTypeName: Enemy1Behavior, Assembly-CSharp
-        m_MethodName: MoveToTarget
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1141697127}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 925778648}
-        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: StopCoroutine
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: RandomMovementRoutine
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPlayerExitedZone:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 925778648}
-        m_TargetAssemblyTypeName: Enemy1Behavior, Assembly-CSharp
-        m_MethodName: ReturtToCorutine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isInZone: 0
   playerTransform: {fileID: 1141697127}
 --- !u!95 &925778650
 Animator:
@@ -5484,7 +5429,7 @@ Transform:
   m_GameObject: {fileID: 1141697123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -1.45, z: 0}
+  m_LocalPosition: {x: -8, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14486,7 +14431,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.08994423}
+  m_Offset: {x: 0, y: 0.15502787}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14496,7 +14441,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.33333334, y: 0.8201115}
+  m_Size: {x: 0.33333334, y: 0.91005576}
   m_EdgeRadius: 0
 --- !u!1 &2132613441
 GameObject:
@@ -14533,8 +14478,8 @@ MonoBehaviour:
   - {fileID: 1187430942}
   fullLive: {fileID: 8631528406100729615, guid: 11abbd4234fc3f242a4c903a3efffa52, type: 3}
   emptyLive: {fileID: 2765137816077080790, guid: 11abbd4234fc3f242a4c903a3efffa52, type: 3}
-  health: 3
-  numberOfLives: 3
+  health: 50
+  numberOfLives: 50
   OnDeath:
     _PersistentCalls:
     - _Target: {fileID: 715643758}

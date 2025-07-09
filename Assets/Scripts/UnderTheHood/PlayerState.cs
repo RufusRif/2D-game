@@ -14,9 +14,10 @@ public class PlayerState : MonoBehaviour
         Instance = this;
         
     }
-    // Установка состояния: висит/не висит
+    
     public void SetHangingState(bool isHanging)
     {
+        
         IsHanging = isHanging;
     }
     public void SetStandingOnPlatform(bool isStandingOnPlatform)

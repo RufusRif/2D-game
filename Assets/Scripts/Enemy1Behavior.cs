@@ -7,31 +7,42 @@ using UnityEngine.EventSystems;
 
 public class Enemy1Behavior : MonoBehaviour, IUpdatable
 {
-    [SerializeField] SpriteFlipper spriteFlipper;
-    [SerializeField] float speed = 3f;
-    [SerializeField] float minMoveTime = 2;
-    [SerializeField] float maxMoveTime = 5;
+    [SerializeField] private SpriteFlipper spriteFlipper;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float minMoveTime = 2f;
+    [SerializeField] private float maxMoveTime = 5f;
+    private float detectionRange = 20f; 
 
     private bool isMoving = true;
-    private Rigidbody2D rb;
-    private float moveDirection;
-    private Vector3 targetPosition;
     private bool isMovingToTarget = false;
-    private Coroutine randomMovementCoroutine;
-    private Transform playerTransform;
+    private bool isAttacking = false; 
+    private bool playerDetected = false;
 
-    private AnimationController animatonController;
+    private Rigidbody2D rb;
+    private float moveDirection = 1f;
+    private Vector3 targetPosition;
+    private Coroutine randomMovementCoroutine;
+    [SerializeField] private Transform playerTransform;
+
+    private AnimationController animationController;
+
     public void Start()
     {
         spriteFlipper = GetComponent<SpriteFlipper>();
         rb = GetComponent<Rigidbody2D>();
+        //playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        if (playerTransform == null)
+        {
+            Debug.LogError("Player not found! Make sure the Player has tag 'Player'");
+        }
+
         randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
-        animatonController = GetComponent<AnimationController>();
+        animationController = GetComponent<AnimationController>();
     }
 
     public IEnumerator RandomMovementRoutine()
     {
-
         while (true)
         {
             moveDirection = Random.value > 0.5f ? 1f : -1f;
@@ -44,101 +55,159 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
             isMoving = false;
             float stopMovingTime = Random.Range(minMoveTime, maxMoveTime);
             yield return new WaitForSeconds(stopMovingTime);
-
         }
-
     }
+
     public void MoveToTarget(Transform player)
     {
+        if (isMovingToTarget || isAttacking) return;
+
         StopCoroutine(randomMovementCoroutine);
         playerTransform = player;
         isMovingToTarget = true;
-        
     }
-    public void ReturtToCorutine()
+
+    public void ReturnToRandomMovement()
     {
+        if (!isMovingToTarget || isAttacking) return;
+
         isMovingToTarget = false;
         randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
     }
+
     public void ChangeMoveDirection()
     {
-        if (transform.position.x <= -8 && moveDirection <0)
+        if (transform.position.x <= -8 && moveDirection < 0)
         {
             moveDirection = 1;
         }
-        else if (transform.position.x >= 8 && moveDirection >0)
+        else if (transform.position.x >= 8 && moveDirection > 0)
         {
             moveDirection = -1;
         }
         spriteFlipper.SetFlipDirection(-moveDirection);
     }
 
-    public IEnumerator StopAfterAtackRoutine()
+    public IEnumerator StopAfterAttackRoutine()
     {
+        isAttacking = true;
+
         isMovingToTarget = false;
         isMoving = false;
-        yield return new WaitForSeconds(0.5f);
+        rb.linearVelocityX = 0;
+        animationController.SetRunAnimation(0);
 
-        if (playerTransform != null && Mathf.Abs(playerTransform.position.y - transform.position.y) < 0.1f)
+        yield return new WaitForSeconds(0.8f);
+
+        DetectPlayerWithRaycast();
+
+        if (playerDetected)
         {
-            // Если игрок всё ещё на том же этаже, бежим к нему снова
             MoveToTarget(playerTransform);
         }
         else
         {
-            StartCoroutine(RandomMovementRoutine());
+            ReturnToRandomMovement();
+        }
+
+        isAttacking = false;
+    }
+
+    public void AfterAttack()
+    {
+        if (!isAttacking)
+        {
+            StartCoroutine(StopAfterAttackRoutine());
         }
     }
-    public void AfterAtack()
-    {
-        StartCoroutine(StopAfterAtackRoutine());
-    }
+
     public void CustomUpdate()
     {
-        ChangeMoveDirection();
+        DetectPlayerWithRaycast();
+        ChangeMoveDirection(); 
 
-        if (isMovingToTarget)
+        if (isMovingToTarget && playerTransform != null)
         {
             targetPosition = playerTransform.position;
 
             if (Vector2.Distance(transform.position, targetPosition) > 0.1f)
             {
-
                 Vector2 direction = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
-                rb.linearVelocityX = direction.x * speed * 2f;
+                rb.linearVelocityX = direction.x * speed * 3f;
                 moveDirection = Mathf.Sign(direction.x);
 
                 spriteFlipper.SetFlipDirection(-moveDirection);
-                animatonController.SetRunAnimation(Mathf.Abs(direction.x));
-                
+                animationController.SetRunAnimation(Mathf.Abs(direction.x));
             }
-
             else
             {
                 rb.linearVelocityX = 0;
                 isMovingToTarget = false;
-                animatonController.SetRunAnimation(0);
+                animationController.SetRunAnimation(0);
             }
         }
-
         else if (isMoving)
         {
             rb.linearVelocityX = moveDirection * speed;
-            animatonController.SetRunAnimation(Mathf.Abs(moveDirection));
-
+            animationController.SetRunAnimation(Mathf.Abs(moveDirection));
         }
         else
         {
             rb.linearVelocityX = 0;
-            animatonController.SetRunAnimation(0);
+            animationController.SetRunAnimation(0);
         }
-        
-
     }
+
+    private void DetectPlayerWithRaycast()
+    {
+        if (playerTransform == null) return;
+
+        LayerMask playerLayerMask = LayerMask.GetMask("Player");
+
+        Vector2 directionRight = Vector2.right;
+        Vector2 directionLeft = Vector2.left;
+
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, directionRight, detectionRange, playerLayerMask);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, directionLeft, detectionRange, playerLayerMask);
+
+        Color rayColorRight = Color.red;
+        Color rayColorLeft = Color.red;
+
+        bool playerDetected = false;
+
+        if (hitRight.collider != null)
+        {
+            rayColorRight = Color.green;
+            playerDetected = true;
+        }
+
+        if (hitLeft.collider != null)
+        {
+            rayColorLeft = Color.green;
+            playerDetected = true;
+        }
+
+        if (playerDetected)
+        {
+            if (!isMovingToTarget && !isAttacking)
+            {
+                MoveToTarget(playerTransform);
+            }
+        }
+        else
+        {
+            if (isMovingToTarget && !isAttacking)
+            {
+                ReturnToRandomMovement();
+            }
+        }
+    }
+
     private void OnEnable()
     {
         UpdateManager.Instance.Register(this);
     }
+
     private void OnDisable()
     {
         UpdateManager.Instance.Unregister(this);

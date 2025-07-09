@@ -3,11 +3,11 @@ using UnityEngine.Events;
 
 public class CollisionCheckerPlatform : MonoBehaviour
 {
-    [SerializeField] private Collider2D currentCollider; // Коллайдер этой панели
+    [SerializeField] private Collider2D currentCollider; 
 
     public UnityEvent OnTouchedFromBelow;
     private float heightOfSecondPlatform = 0f;
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -40,7 +40,7 @@ public class CollisionCheckerPlatform : MonoBehaviour
             PlayerState.Instance.SetStandingOnPlatform(isStandingOnPlatform);
 
 
-            bool isOnSecondPlatform = characterY > heightOfSecondPlatform;
+            bool isOnSecondPlatform = isStandingOnPlatform && characterY > heightOfSecondPlatform;
 
             PlayerState.Instance.SetStandingOnSecondPlatform(isOnSecondPlatform);
         }
@@ -51,8 +51,8 @@ public class CollisionCheckerPlatform : MonoBehaviour
         {
             PlayerState.Instance.SetHangingState(false);
             PlayerState.Instance.SetStandingOnPlatform(false);
+            PlayerState.Instance.SetStandingOnSecondPlatform(false);
         }
+
     }
 }
-
-
