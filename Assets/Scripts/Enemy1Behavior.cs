@@ -30,7 +30,6 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
     {
         spriteFlipper = GetComponent<SpriteFlipper>();
         rb = GetComponent<Rigidbody2D>();
-        //playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         if (playerTransform == null)
         {
@@ -164,29 +163,54 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
 
         LayerMask playerLayerMask = LayerMask.GetMask("Player");
 
+        Vector2 origin = (Vector2)transform.position;
+        Vector2 originUp = origin + new Vector2(0f, 0.8f);
+
         Vector2 directionRight = Vector2.right;
         Vector2 directionLeft = Vector2.left;
 
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, directionRight, detectionRange, playerLayerMask);
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, directionLeft, detectionRange, playerLayerMask);
+        RaycastHit2D hitRight = Physics2D.Raycast(origin, directionRight, detectionRange, playerLayerMask);
+        RaycastHit2D hitLeft = Physics2D.Raycast(origin, directionLeft, detectionRange, playerLayerMask);
+        RaycastHit2D hitRightUp = Physics2D.Raycast(originUp, directionRight, detectionRange, playerLayerMask);
+        RaycastHit2D hitLeftUp = Physics2D.Raycast(originUp, directionLeft, detectionRange, playerLayerMask);
 
-        Color rayColorRight = Color.red;
-        Color rayColorLeft = Color.red;
+
+
+
+        Color rayColorRight = Color.yellow;
+        Color rayColorLeft = Color.yellow;
+        Color rayColorRightUp = Color.yellow;
+        Color rayColorLeftUp = Color.yellow;
 
         bool playerDetected = false;
 
+        if (hitRight.collider != null || hitLeft.collider != null || hitRightUp.collider != null || hitLeftUp.collider != null)
+        {
+            playerDetected = true;
+        }
+
+        // Меняем цвет только тех лучей, которые попали в игрока
         if (hitRight.collider != null)
         {
-            rayColorRight = Color.green;
-            playerDetected = true;
+            rayColorRight = Color.red;
         }
 
         if (hitLeft.collider != null)
         {
-            rayColorLeft = Color.green;
-            playerDetected = true;
+            rayColorLeft = Color.red;
         }
 
+        if (hitRightUp.collider != null)
+        {
+            rayColorRightUp = Color.red;
+        }
+
+        if (hitLeftUp.collider != null)
+        {
+            rayColorLeftUp = Color.red;
+        }
+
+        //Debug.DrawRay(origin, directionRight * detectionRange, rayColorRight);
         if (playerDetected)
         {
             if (!isMovingToTarget && !isAttacking)
