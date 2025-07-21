@@ -3,25 +3,12 @@ using UnityEngine;
 public class BotManager : MonoBehaviour
 {
     [SerializeField] private BotMovement botMovement;
-    private void Start()
-    {
+    [SerializeField] private BotStateManager botStateManager;
 
-        if (botMovement == null)
-        {
-            botMovement = GetComponent<BotMovement>();
-        }
-
-        StartRandomMovement();
-    }
     public void StartRandomMovement()
     {
-        if (botMovement != null)
-        {
-            botMovement.isMovingToTarget = false;
-            botMovement.isMoving = true;
-            StartCoroutine(botMovement.RandomMovementRoutine());
-        }
-        
+        botStateManager.SetState(BotStateManager.BotState.RandomMovement);
+        botMovement.StartRandomMovementCoroutine();
     }
     public void NoticeFruit(GameObject fruit)
     {

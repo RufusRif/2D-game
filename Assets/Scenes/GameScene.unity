@@ -12912,8 +12912,9 @@ GameObject:
   - component: {fileID: 1646504273}
   - component: {fileID: 1646504275}
   - component: {fileID: 1646504279}
-  - component: {fileID: 1646504276}
+  - component: {fileID: 1646504283}
   - component: {fileID: 1646504278}
+  - component: {fileID: 1646504276}
   - component: {fileID: 1646504280}
   - component: {fileID: 1646504281}
   - component: {fileID: 1646504282}
@@ -13085,11 +13086,12 @@ MonoBehaviour:
   maxMoveTime: 5
   minStopTime: 1
   maxStopTime: 3
-  isMoving: 1
-  isMovingToTarget: 0
+  spriteFlipper: {fileID: 1646504280}
   stonePrefab: {fileID: 200054546042777327, guid: b9a537425ffc8a049b111df148ef3535, type: 3}
   spawnPoint: {fileID: 1921511138}
-  spriteFlipper: {fileID: 1646504280}
+  rb: {fileID: 1646504273}
+  animationController: {fileID: 1646504282}
+  botStateManager: {fileID: 1646504283}
 --- !u!114 &1646504278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13103,6 +13105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botMovement: {fileID: 1646504276}
+  botStateManager: {fileID: 1646504283}
 --- !u!95 &1646504279
 Animator:
   serializedVersion: 7
@@ -13203,6 +13206,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1646504273}
   animator: {fileID: 1646504279}
+--- !u!114 &1646504283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646504270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7958ff34924984ca2c301ba69c0f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botState: 0
 --- !u!1 &1756433074
 GameObject:
   m_ObjectHideFlags: 0
