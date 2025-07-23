@@ -19,6 +19,4 @@ public class BotStateManager : MonoBehaviour
     {
         botState = newState;
     }
-
-
 }

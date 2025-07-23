@@ -16,23 +16,24 @@ public class BotMovement : MonoBehaviour, IUpdatable
     private float moveDirection;
     private Vector3 targetPosition;
 
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private AnimationController animationController;
-    [SerializeField] private BotStateManager botStateManager;
+    private Rigidbody2D rb;
+    private AnimationController animationController;
+    private BotStateManager botStateManager;
 
     private Coroutine randomMovementCoroutine;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animationController = GetComponent<AnimationController>();
+        botStateManager = GetComponent<BotStateManager>();
+    }
     private void Start()
     {
         randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
     }
     public void StartRandomMovementCoroutine()
     {
-        //if (randomMovementCoroutine != null)
-        //{
-        //    StopCoroutine(randomMovementCoroutine);
-        //}
-
         randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
     }
 
@@ -81,60 +82,28 @@ public class BotMovement : MonoBehaviour, IUpdatable
     public void MoveToTarget(GameObject position)
     {
         targetPosition = position.transform.position;
-
-        if (randomMovementCoroutine != null)
-        {
-            StopCoroutine(randomMovementCoroutine);
-            Debug.Log("Корутина остановлена так как начал работу метод MoveToTarget.");
-        }
-
+        StopCoroutine(randomMovementCoroutine);
         botStateManager.SetState(BotStateManager.BotState.MovingToTarget);
     }
-
-    public void CustomUpdate()
+    private void HandleMovingToTarget()
     {
-        ChangeMoveDirection();
-
-        switch (botStateManager.botState)
-        {
-            case BotStateManager.BotState.MovingToTarget:
-
-                //if (Vector2.Distance(transform.position, targetPosition) > 0.1f)
-                //{
-                    Vector2 direction = (targetPosition - transform.position).normalized;
-                    rb.linearVelocityX = direction.x * speed * 2f;
-                    moveDirection = Mathf.Sign(direction.x);
-                    spriteFlipper.SetFlipDirection(moveDirection);
-                    animationController.SetRunAnimation(Mathf.Abs(direction.x));
-                //}
-                //else
-                //{
-                //    Debug.Log("Корутина остановлена так как фрукт найден");
-                //    rb.linearVelocityX = 0;
-                //    animationController.SetRunAnimation(0);
-                //    botStateManager.SetState(BotStateManager.BotState.RandomMovement);
-
-
-                //    StopCoroutine(randomMovementCoroutine);
-                //    Debug.Log("Корутина остановлена так как фрукт найден");
-
-                //    randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
-                //    Debug.Log("Корутина запущена так как после нахождения фрукта нужно вернуться к поведению.");
-                //}
-                break;
-
-            case BotStateManager.BotState.RandomMovement:
-                rb.linearVelocityX = moveDirection * speed;
-                animationController.SetRunAnimation(Mathf.Abs(moveDirection));
-                break;
-
-            case BotStateManager.BotState.Idle:
-                rb.linearVelocityX = 0;
-                animationController.SetRunAnimation(0);
-                break;
-        }
+        Vector2 direction = (targetPosition - transform.position).normalized;
+        rb.linearVelocityX = direction.x * speed * 2f;
+        moveDirection = Mathf.Sign(direction.x);
+        spriteFlipper.SetFlipDirection(moveDirection);
+        animationController.SetRunAnimation(Mathf.Abs(direction.x));
+    }
+    private void HandleRandomMovement()
+    {
+        rb.linearVelocityX = moveDirection * speed;
+        animationController.SetRunAnimation(Mathf.Abs(moveDirection));
     }
 
+    private void HandleIdle()
+    {
+        rb.linearVelocityX = 0;
+        animationController.SetRunAnimation(0);
+    }
     public IEnumerator DropStonesRoutine()
     {
         yield return new WaitForSeconds(2f);
@@ -144,7 +113,26 @@ public class BotMovement : MonoBehaviour, IUpdatable
             yield return new WaitForSeconds(1.5f);
         }
     }
+    public void CustomUpdate()
+    {
+        ChangeMoveDirection();
 
+        switch (botStateManager.botState)
+        {
+            case BotStateManager.BotState.MovingToTarget:
+
+                HandleMovingToTarget();
+                break;
+
+            case BotStateManager.BotState.RandomMovement:
+                HandleRandomMovement();
+                break;
+
+            case BotStateManager.BotState.Idle:
+                HandleIdle();
+                break;
+        }
+    }
     private void OnEnable()
     {
         UpdateManager.Instance.Register(this);

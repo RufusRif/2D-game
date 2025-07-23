@@ -30,14 +30,9 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
     {
         spriteFlipper = GetComponent<SpriteFlipper>();
         rb = GetComponent<Rigidbody2D>();
-
-        if (playerTransform == null)
-        {
-            Debug.LogError("Player not found! Make sure the Player has tag 'Player'");
-        }
+        animationController = GetComponent<AnimationController>();
 
         randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
-        animationController = GetComponent<AnimationController>();
     }
 
     public IEnumerator RandomMovementRoutine()
@@ -173,9 +168,6 @@ public class Enemy1Behavior : MonoBehaviour, IUpdatable
         RaycastHit2D hitLeft = Physics2D.Raycast(origin, directionLeft, detectionRange, playerLayerMask);
         RaycastHit2D hitRightUp = Physics2D.Raycast(originUp, directionRight, detectionRange, playerLayerMask);
         RaycastHit2D hitLeftUp = Physics2D.Raycast(originUp, directionLeft, detectionRange, playerLayerMask);
-
-
-
 
         Color rayColorRight = Color.yellow;
         Color rayColorLeft = Color.yellow;

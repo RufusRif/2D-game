@@ -9,7 +9,6 @@ public class EnemyAttackHandler : MonoBehaviour
 
     private void Start()
     {
-        
         animator = GetComponent<Animator>();
     }
     public void Attack(GameObject target)
@@ -19,13 +18,13 @@ public class EnemyAttackHandler : MonoBehaviour
 
         if (damageable != null && damageable.IsAlive())
         {
-            damageable.TakeDamage(damage); // Наносим урон
+            damageable.TakeDamage(damage); 
            
         }
     }
     public void PlayHitAnimation()
     {
-            animator.SetTrigger("isHit"); // Активируем триггер isHit
+        animator.SetTrigger("isHit");
     }
 }
 
