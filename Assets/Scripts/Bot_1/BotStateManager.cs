@@ -9,12 +9,10 @@ public class BotStateManager : MonoBehaviour
         MovingToTarget
     }
     public BotState botState;
-
     private void Start()
     {
         botState = BotState.RandomMovement;
     }
-
     public void SetState(BotState newState)
     {
         botState = newState;

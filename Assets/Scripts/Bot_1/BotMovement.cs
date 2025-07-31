@@ -41,7 +41,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
     {
         while (true)
         {
-            Debug.Log("Корутина запущена в начале игры.");
+           
             if (botStateManager.botState == BotStateManager.BotState.RandomMovement)
             {
                 moveDirection = Random.value > 0.5f ? 1f : -1f;
@@ -54,7 +54,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
                 float stopTime = Random.Range(minStopTime, maxStopTime);
                 yield return new WaitForSeconds(stopTime);
 
-                // Проверка: если не в `MovingToTarget`, возвращаемся в `RandomMovement`
+
                 if (botStateManager.botState != BotStateManager.BotState.MovingToTarget)
                 {
                     botStateManager.SetState(BotStateManager.BotState.RandomMovement);
@@ -98,7 +98,6 @@ public class BotMovement : MonoBehaviour, IUpdatable
         rb.linearVelocityX = moveDirection * speed;
         animationController.SetRunAnimation(Mathf.Abs(moveDirection));
     }
-
     private void HandleIdle()
     {
         rb.linearVelocityX = 0;
@@ -121,16 +120,14 @@ public class BotMovement : MonoBehaviour, IUpdatable
         {
             case BotStateManager.BotState.MovingToTarget:
 
-                HandleMovingToTarget();
-                break;
+                HandleMovingToTarget(); break;
 
             case BotStateManager.BotState.RandomMovement:
-                HandleRandomMovement();
-                break;
+                HandleRandomMovement(); break;
 
             case BotStateManager.BotState.Idle:
-                HandleIdle();
-                break;
+                HandleIdle(); break;
+
         }
     }
     private void OnEnable()

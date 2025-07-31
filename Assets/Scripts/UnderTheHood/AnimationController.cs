@@ -35,7 +35,6 @@ public class AnimationController : MonoBehaviour, IUpdatable
         animator.SetTrigger("HitTrigger");
     }
     
-
     public void UpdateMovementAnimations()
     {
         if(HasAnimatorParameter("yVelocity",AnimatorControllerParameterType.Float))
@@ -54,7 +53,6 @@ public class AnimationController : MonoBehaviour, IUpdatable
        
            
     }
-
     private bool HasAnimatorParameter(string parameterName, AnimatorControllerParameterType parameterType)
     {
         foreach (AnimatorControllerParameter parameter in animator.parameters)
@@ -66,7 +64,6 @@ public class AnimationController : MonoBehaviour, IUpdatable
         }
         return false;
     }
-
     public void CustomUpdate()
     {
         UpdateMovementAnimations();
@@ -82,5 +79,4 @@ public class AnimationController : MonoBehaviour, IUpdatable
         UpdateManager.Instance.Unregister(this);
     }
 
-    
 }

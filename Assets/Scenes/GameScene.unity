@@ -4339,8 +4339,9 @@ GameObject:
   - component: {fileID: 925778652}
   - component: {fileID: 925778650}
   - component: {fileID: 925778653}
-  - component: {fileID: 925778648}
   - component: {fileID: 925778642}
+  - component: {fileID: 925778654}
+  - component: {fileID: 925778648}
   - component: {fileID: 925778643}
   - component: {fileID: 925778644}
   - component: {fileID: 925778645}
@@ -4406,7 +4407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf3c83a8bb2e7a4689abd4904817c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  playerTransform: {fileID: 1141697127}
+  detectionRange: 20
 --- !u!114 &925778643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4420,34 +4422,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfCollisionOnbect: Player
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 925778642}
-        m_TargetAssemblyTypeName: EnemyAttack, Assembly-CSharp
-        m_MethodName: Attack
-        m_Mode: 0
+        m_TargetAssemblyTypeName: Enemy1Manager, Assembly-CSharp
+        m_MethodName: SetStateAttack
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 925778648}
-        m_TargetAssemblyTypeName: Enemy1Behavior, Assembly-CSharp
-        m_MethodName: AfterAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1141697123}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4465,12 +4449,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls: []
   OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isInZone: 0
 --- !u!114 &925778644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4484,12 +4481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfCollisionOnbect: CatchedBomb
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -4505,18 +4496,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 925778642}
-        m_TargetAssemblyTypeName: EnemyAttackHandler, Assembly-CSharp
-        m_MethodName: PlayHitAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls:
@@ -4535,6 +4520,13 @@ MonoBehaviour:
   OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isInZone: 0
 --- !u!114 &925778645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4559,11 +4551,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d150f2a6903e846a753bd1b58defbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteFlipper: {fileID: 925778645}
-  speed: 2
+  checkerCollisions: {fileID: 1945562744}
+  playerTransform: {fileID: 1141697127}
   minMoveTime: 2
   maxMoveTime: 5
-  playerTransform: {fileID: 1141697127}
+  minStopTime: 2
+  maxStopTime: 5
+  damage: 1
 --- !u!95 &925778650
 Animator:
   serializedVersion: 7
@@ -4701,6 +4695,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 925778638}
   animator: {fileID: 925778650}
+--- !u!114 &925778654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925778636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e94c3a1a5af2f54f9d2adcb4991fb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy1State: 0
 --- !u!1 &1004658318
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,12 +5714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfCollisionOnbect: FallingObject
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5752,12 +5753,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls: []
   OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isInZone: 0
 --- !u!1 &1161022334
 GameObject:
   m_ObjectHideFlags: 0
@@ -12756,6 +12770,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfCollisionOnbect: Player
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnCollisionStayEvent:
     m_PersistentCalls:
       m_Calls:
@@ -12786,15 +12803,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnCollisionEnterEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls: []
   OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isInZone: 0
 --- !u!114 &1595632272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12808,12 +12829,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfCollisionOnbect: FallingObject
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -12829,6 +12844,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls:
@@ -12847,6 +12868,13 @@ MonoBehaviour:
   OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isInZone: 0
 --- !u!114 &1595632273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12860,12 +12888,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfCollisionOnbect: CatchedBomb
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -12881,6 +12903,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls:
@@ -12899,6 +12927,13 @@ MonoBehaviour:
   OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isInZone: 0
 --- !u!1 &1646504270
 GameObject:
   m_ObjectHideFlags: 0
@@ -13089,9 +13124,6 @@ MonoBehaviour:
   spriteFlipper: {fileID: 1646504280}
   stonePrefab: {fileID: 200054546042777327, guid: b9a537425ffc8a049b111df148ef3535, type: 3}
   spawnPoint: {fileID: 1921511138}
-  rb: {fileID: 1646504273}
-  animationController: {fileID: 1646504282}
-  botStateManager: {fileID: 1646504283}
 --- !u!114 &1646504278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13153,12 +13185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfCollisionOnbect: Fruit
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -13186,12 +13212,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnExplosionNeeded:
     m_PersistentCalls:
       m_Calls: []
   OnTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isInZone: 0
 --- !u!114 &1646504282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13461,6 +13500,144 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938457663}
   m_CullTransparentMesh: 1
+--- !u!1 &1945562741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945562743}
+  - component: {fileID: 1945562742}
+  - component: {fileID: 1945562744}
+  m_Layer: 0
+  m_Name: DetectionZoneEnemy1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1945562742
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945562741}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 1, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 17.5, y: 1.7}
+  m_EdgeRadius: 0
+--- !u!4 &1945562743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945562741}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -3, z: -0.0061955466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1945562744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945562741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e798faa5d6b854faf2950b246afee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfCollisionOnbect: Player
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExplosionNeeded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerEnterWithTransform:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 925778642}
+        m_TargetAssemblyTypeName: Enemy1Manager, Assembly-CSharp
+        m_MethodName: SetStateMovingToTarget
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1141697127}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 925778642}
+        m_TargetAssemblyTypeName: Enemy1Manager, Assembly-CSharp
+        m_MethodName: SetStateRandomMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isInZone: 0
 --- !u!1 &2025146318
 GameObject:
   m_ObjectHideFlags: 0
@@ -14494,8 +14671,8 @@ MonoBehaviour:
   - {fileID: 1187430942}
   fullLive: {fileID: 8631528406100729615, guid: 11abbd4234fc3f242a4c903a3efffa52, type: 3}
   emptyLive: {fileID: 2765137816077080790, guid: 11abbd4234fc3f242a4c903a3efffa52, type: 3}
-  health: 50
-  numberOfLives: 50
+  health: 3
+  numberOfLives: 3
   OnDeath:
     _PersistentCalls:
     - _Target: {fileID: 715643758}
@@ -14555,3 +14732,4 @@ SceneRoots:
   - {fileID: 715643757}
   - {fileID: 1462963615}
   - {fileID: 710704909}
+  - {fileID: 1945562743}
