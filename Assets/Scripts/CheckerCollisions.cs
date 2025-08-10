@@ -17,8 +17,6 @@ public class CheckerCollisions : MonoBehaviour
     public UnityEvent OnTriggerExitEvent;
 
     [SerializeField] private bool isInZone;
-
-    //public bool Isinzone {  get; private set; }
     public bool IsInZone
     {
         get { return isInZone; }

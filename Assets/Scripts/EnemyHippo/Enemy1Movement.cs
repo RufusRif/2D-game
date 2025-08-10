@@ -100,6 +100,7 @@ public class Enemy1Movement : MonoBehaviour, IUpdatable
     {
         if (playerTransform != null)
         {
+            
             targetPosition = playerTransform.position;
             if (Vector2.Distance(transform.position, targetPosition) > 0.1f)
             {
@@ -118,6 +119,8 @@ public class Enemy1Movement : MonoBehaviour, IUpdatable
         if (damageable != null && damageable.IsAlive())
         {
             damageable.TakeDamage(damage);
+            SoundManager.Instance.PlaySoundEffect("RhinoAttack");
+            
         }
         StartCoroutine(AttackPauseRoutine());
     }

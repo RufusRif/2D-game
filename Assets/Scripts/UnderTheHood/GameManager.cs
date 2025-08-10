@@ -7,8 +7,15 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverCanvas;
     [SerializeField] private GameObject gameWinCanvas;
+
+    private void Start()
+    {
+        SoundManager.Instance.PlayMusic("GameMusic");
+    }
     public void Die(GameObject target)
     {
+        SoundManager.Instance.StopMusic();
+        SoundManager.Instance.PlayMusic("PlayerDeathMusic");
         target.SetActive(false);
        
         StartCoroutine(ShowCanvasWithDelay(ShowDeathCanvas));
@@ -16,6 +23,8 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         StartCoroutine(ShowCanvasWithDelay(ShowWinCanvas));
+        SoundManager.Instance.StopMusic();
+        SoundManager.Instance.PlayMusic("WinMusic");
     }
     public void ShowWinCanvas()
     {
@@ -40,12 +49,14 @@ public class GameManager : MonoBehaviour
     {
         ResumeGame();
         SceneManager.LoadScene("GameScene");
-
     }
     public void GoToMenu()
     {
+        Debug.Log("Кнопка нажата. SceneManager.LoadScene(StartScene) ");
         ResumeGame();
         SceneManager.LoadScene("StartScene");
+        SoundManager.Instance.PlayMusic("MenuMusic");
+        Debug.Log("должна была проиграться музыка MenuMusic ");
     }
 
     private IEnumerator ShowCanvasWithDelay(Action showCanvas)

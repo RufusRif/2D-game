@@ -109,6 +109,7 @@ public class BotMovement : MonoBehaviour, IUpdatable
         for (int i = 0; i < 3; i++)
         {
             Instantiate(stonePrefab, spawnPoint.position, Quaternion.identity);
+            SoundManager.Instance.PlaySoundEffect("BunnyThrowDynamite");
             yield return new WaitForSeconds(1.5f);
         }
     }

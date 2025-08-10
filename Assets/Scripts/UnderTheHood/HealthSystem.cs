@@ -40,6 +40,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
         if (!IsAlive())
         {
+            
             OnDeath.Invoke(gameObject);
         }
     }

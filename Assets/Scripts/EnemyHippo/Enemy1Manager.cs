@@ -9,8 +9,6 @@ public class Enemy1Manager : MonoBehaviour
 
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float detectionRange = 20f;
-    //[SerializeField] private AnimationController animationController;
-
     private void Awake()
     {
         enemy1StateManager = GetComponent<Enemy1StateManager>();
@@ -22,13 +20,14 @@ public class Enemy1Manager : MonoBehaviour
     }
     public void SetStateAttack(GameObject player)
     {
-      
+        
         playerTransform = player.transform;
         enemy1StateManager.SetState(Enemy1StateManager.Enemy1State.Attack);
-        //animationController.HitPlayerAnimation();
+        
     }
     public void SetStateMovingToTarget(Transform player)
     {
+        SoundManager.Instance.PlaySoundEffect("RhinoMoveToTarget");
         playerTransform = player;
         enemy1StateManager.SetState(Enemy1StateManager.Enemy1State.MovingToTarget);
     }

@@ -16,8 +16,6 @@ public class ActionDispatcher : MonoBehaviour
     [SerializeField] GameObject dynamitePrefab;
     [SerializeField] GameObject applePrefab;
 
-
-
     public void UpButtonPressed()
     {
         if (PlayerState.Instance.IsOnGround || PlayerState.Instance.IsStandingOnPlatform)
@@ -42,7 +40,7 @@ public class ActionDispatcher : MonoBehaviour
         {
             positionUnstopper?.UnStopPossition();
         }
-        
+
     }
     public void MoveButtonPressed(float direction)
     {
@@ -56,25 +54,19 @@ public class ActionDispatcher : MonoBehaviour
             objectInstantiater?.InstantiateObject(applePrefab);
 
             fruitState.SetIsTaking(false);
-
         }
         else if (PlayerState.Instance.IsNearTheTree && !FruitState.Instance.IsTaiking)
         {
-
             FruitState.Instance.SetIsTaking(true);
-
         }
     }
     public void ActionEnterPressed()
     {
         if (inventoryPlayer != null && inventoryPlayer.currentDynamites > 0)
         {
-           
             dynamiteSpawner.SpawnAndInitializeDynamite();
             inventoryPlayer.MinusOneBomb();
-            
+            SoundManager.Instance.PlaySoundEffect("PlayerThrowDynamite");
         }
-
-
     }
 }
