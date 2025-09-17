@@ -61,6 +61,10 @@ sysinfo.txt
 *.aab
 *.app
 
+# Android NDK build artifacts
+.utmp/
+.cmake/
+
 # Crashlytics generated file
 crashlytics-build.properties
 
