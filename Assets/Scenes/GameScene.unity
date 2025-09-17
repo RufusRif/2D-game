@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -88, y: 266.04544}
+  m_AnchoredPosition: {x: -105, y: 297}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14125367
@@ -311,6 +311,7 @@ MonoBehaviour:
   inventoryPlayer: {fileID: 316117341}
   dynamitePrefab: {fileID: 200054546042777327, guid: 69f6dd506c6a3ed408a8965ab58ad3c4, type: 3}
   applePrefab: {fileID: 730949873414033626, guid: 7f9feab42cc118b4388deccc633dda7d, type: 3}
+  soundManager: {fileID: 1091002637}
 --- !u!4 &74958125
 Transform:
   m_ObjectHideFlags: 0
@@ -1071,7 +1072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 276.62634, y: 151.65878}
+  m_AnchoredPosition: {x: 353, y: 151.65878}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &363846711
@@ -3757,8 +3758,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 92.04547}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -102.70007, y: 108.772}
+  m_SizeDelta: {x: 145.4002, y: 133.4531}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844614695
 MonoBehaviour:
@@ -4813,7 +4814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -88, y: 468.9545}
+  m_AnchoredPosition: {x: -104.99994, y: 499.90906}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073960936
@@ -5178,7 +5179,7 @@ Transform:
   m_GameObject: {fileID: 1141697123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -1, z: 0}
+  m_LocalPosition: {x: 2.27, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5264,18 +5265,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1091002637}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PlaySoundEffect
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PlayerJump
           m_BoolArgument: 0
         m_CallState: 2
   OnAction:
@@ -13418,7 +13407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 174.8081, y: 92.749725}
+  m_AnchoredPosition: {x: 211, y: 90}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031189198

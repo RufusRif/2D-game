@@ -16,11 +16,15 @@ public class ActionDispatcher : MonoBehaviour
     [SerializeField] GameObject dynamitePrefab;
     [SerializeField] GameObject applePrefab;
 
+    [SerializeField] SoundManager soundManager;
+
     public void UpButtonPressed()
     {
         if (PlayerState.Instance.IsOnGround || PlayerState.Instance.IsStandingOnPlatform)
         {
             pushRigidBody?.Push();
+            soundManager.PlaySoundEffect("PlayerJump");
+
         }
 
         else if (PlayerState.Instance.IsHanging)
@@ -28,6 +32,7 @@ public class ActionDispatcher : MonoBehaviour
             changerLayer?.ChangeTheLayer();
             pushRigidBody?.Push();
             positionUnstopper?.UnStopPossition();
+            soundManager.PlaySoundEffect("PlayerJump");
         }
     }
     public void DownButtonPressed()

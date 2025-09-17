@@ -62,7 +62,6 @@ public class SoundManager : MonoBehaviour
             { "ButtonPress", buttonPress }
         };
 
-        //PlayMusic("GameMusic");
     }
 
     public void PlayMusic(string musicName)
@@ -80,7 +79,6 @@ public class SoundManager : MonoBehaviour
             effectSoundSource.PlayOneShot(clip);
         }
     }
-
     public void StopMusic()
     {
         musicSource.Stop();
