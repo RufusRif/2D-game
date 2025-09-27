@@ -8,7 +8,7 @@ public class Enemy1Manager : MonoBehaviour
     private Enemy1StateManager enemy1StateManager;
 
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float detectionRange = 20f;
+    //[SerializeField] private float detectionRange = 20f;
     private void Awake()
     {
         enemy1StateManager = GetComponent<Enemy1StateManager>();

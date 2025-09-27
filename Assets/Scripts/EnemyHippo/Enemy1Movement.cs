@@ -19,7 +19,7 @@ public class Enemy1Movement : MonoBehaviour, IUpdatable
     private Vector3 targetPosition;
     private float moveDirection = 1f;
     private float speed = 2f;
-    private float detectionRange = 20f;
+    //private float detectionRange = 20f;
 
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float minMoveTime = 2f;
