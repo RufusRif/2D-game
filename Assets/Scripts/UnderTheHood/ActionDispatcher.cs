@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
 public class ActionDispatcher : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+
+    
     [SerializeField] PushRigidBody pushRigidBody;
     [SerializeField] ChangerLayer changerLayer;
     [SerializeField] PositionUnstopper positionUnstopper;
@@ -15,9 +16,19 @@ public class ActionDispatcher : MonoBehaviour
 
     [SerializeField] GameObject dynamitePrefab;
     [SerializeField] GameObject applePrefab;
+    [SerializeField] GameObject player;
 
     [SerializeField] SoundManager soundManager;
-
+    public static ActionDispatcher Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
     public void UpButtonPressed()
     {
         if (PlayerState.Instance.IsOnGround || PlayerState.Instance.IsStandingOnPlatform)
@@ -54,7 +65,7 @@ public class ActionDispatcher : MonoBehaviour
     }
     public void ActionPressed()
     {
-        if (PlayerState.Instance.IsStandingOnSecondPlatform && fruitState.IsTaiking)
+        if (fruitState.IsTaiking)
         {
             objectInstantiater?.InstantiateObject(applePrefab);
 
@@ -72,6 +83,21 @@ public class ActionDispatcher : MonoBehaviour
             dynamiteSpawner.SpawnAndInitializeDynamite();
             inventoryPlayer.MinusOneBomb();
             SoundManager.Instance.PlaySoundEffect("PlayerThrowDynamite");
+        }
+    }
+
+    // Это публичное свойство — его могут использовать другие скрипты
+    public PositionStopper PlayerStopper
+    {
+        get
+        {
+            if (player == null)
+            {
+                return null;
+            }
+            PositionStopper stopper = player.GetComponent<PositionStopper>();
+
+            return stopper;
         }
     }
 }

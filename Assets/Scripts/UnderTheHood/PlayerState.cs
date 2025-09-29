@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public static PlayerState Instance { get; private set; }
-    [field: SerializeField] public bool IsStandingOnSecondPlatform { get; private set; }
+    
     [field: SerializeField] public bool IsStandingOnPlatform { get; private set; }
     [field: SerializeField] public bool IsHanging { get; private set; }
     [field: SerializeField] public bool IsNearTheTree { get; private set; }
@@ -32,10 +32,7 @@ public class PlayerState : MonoBehaviour
     {
        IsNearTheTree = isNearTheTree;
     }
-    public void SetStandingOnSecondPlatform(bool isStandingOnSecondPlatform)
-    {
-       IsStandingOnSecondPlatform = isStandingOnSecondPlatform;
-    }
+
 }
 
 

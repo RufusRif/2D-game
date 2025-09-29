@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class CheckerCollisions : MonoBehaviour
 {
 
-    [SerializeField] private string nameOfCollisionOnbect;
+    [SerializeField] private string nameOfCollisionObject;
 
     public UnityEvent<GameObject> OnCollisionEnterEvent;
     public UnityEvent OnCollisionStayEvent;
@@ -24,21 +24,21 @@ public class CheckerCollisions : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
+        if (collision.gameObject.CompareTag(nameOfCollisionObject))
         {
             OnCollisionStayEvent?.Invoke();
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
+        if (collision.gameObject.CompareTag(nameOfCollisionObject))
         {
             OnCollisionExitEvent?.Invoke();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
+        if (collision.gameObject.CompareTag(nameOfCollisionObject))
         {
 
             GameObject someObject = collision.gameObject;
@@ -50,7 +50,7 @@ public class CheckerCollisions : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
+        if (collision.gameObject.CompareTag(nameOfCollisionObject))
         {
             OnTriggerEnterEvent?.Invoke();
             OnTriggerEnterWithTransform?.Invoke(collision.transform);
@@ -59,7 +59,7 @@ public class CheckerCollisions : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(nameOfCollisionOnbect))
+        if (collision.gameObject.CompareTag(nameOfCollisionObject))
         {
             OnTriggerExitEvent?.Invoke();
             isInZone = false;

@@ -16,7 +16,6 @@ public class PositionStopper : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.gravityScale = 0;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation; // Фиксируем движение по оси X
-            
         }
     }
 }

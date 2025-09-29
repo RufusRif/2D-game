@@ -45,7 +45,7 @@ public class ParticleManager : MonoBehaviour
 
     public void CreateDust()
     {
-        if (PlayerState.Instance.IsOnGround || PlayerState.Instance.IsStandingOnPlatform || PlayerState.Instance.IsStandingOnSecondPlatform)
+        if (PlayerState.Instance.IsOnGround || PlayerState.Instance.IsStandingOnPlatform)
         {
             dust.Play();
         }
